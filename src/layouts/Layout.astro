@@ -1,23 +1,122 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
+import logoXs from '../assets/TM-devs-logo-xs.png';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+}
+
+const {
+  title = 'TMdevs — Desarrollo de Software a Medida',
+  description = 'Desarrollamos aplicaciones web, e-commerce y software empresarial a medida. Soluciones tecnológicas que hacen crecer tu negocio. Consultanos hoy.',
+  ogImage = 'https://tmdevs.com/og-image.jpg',
+} = Astro.props;
+
+const canonicalURL = Astro.props.canonicalURL ?? Astro.url.href;
+
+// json for structured data (schema.org) - https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  name: 'TMdevs',
+  url: 'https://tmdevs.com',
+  logo: 'https://tmdevs.com/favicon.png',
+  description: 'Desarrollamos aplicaciones web, e-commerce y software empresarial a medida.',
+  email: 'hola@tmdevs.com',
+  sameAs: ['https://instagram.com/tmdevs'],
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'AR',
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: -34.6037,
+      longitude: -58.3816,
+    },
+    geoRadius: '50000',
+  },
+  knowsAbout: [
+    'Web Development',
+    'E-Commerce',
+    'Enterprise Software',
+    'API Integration',
+    'Software Development',
+  ],
+  offers: {
+    '@type': 'Offer',
+    itemOffered: [
+      { '@type': 'Service', name: 'Aplicaciones Web a Medida' },
+      { '@type': 'Service', name: 'E-Commerce' },
+      { '@type': 'Service', name: 'Software Empresarial' },
+      { '@type': 'Service', name: 'APIs e Integraciones' },
+    ],
+  },
+});
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <meta name="theme-color" content="#1a1a18" />
+
+    <!-- Canonical + hreflang -->
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="es" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="TMdevs — Desarrollo de Software a Medida" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="TMdevs" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="TMdevs — Desarrollo de Software a Medida" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href={logoXs.src} />
+    <title>{title}</title>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <div class="cursor" id="cursor" aria-hidden="true"></div>
+    <slot/>
+
+    <!-- Mouse vs keyboard cursor detection -->
+    <script>
+      const html = document.documentElement;
+      document.addEventListener('mousemove', () => html.classList.add('using-mouse'));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') html.classList.remove('using-mouse');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+import { useState } from 'react';
+import type { ContactFormState, FormStatus } from '../types/index';
+
+const CONTACT_EMAIL = 'hola@tmdevs.com';
+const CONTACT_LOCATION = 'Argentina';
+const CONTACT_SERVICES = 'Aplicaciones Web · E-Commerce · Software Empresarial';
+
+export default function ContactSection() {
+  const [form, setForm] = useState<ContactFormState>({
+    name: '',
+    email: '',
+    project: '',
+    message: '',
+  });
+  const [status, setStatus] = useState<FormStatus>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      // TODO: Replace with real endpoint when backend is ready
+      // const res = await fetch('/api/contact', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(form),
+      // });
+      // if (!res.ok) throw new Error('Server error');
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      setStatus('success');
+      setForm({ name: '', email: '', project: '', message: '' });
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  const isLoading = status === 'loading';
+
+  return (
+    <div className="w-full grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '100vh' }}>
+      {/* Left column — Contact info */}
+      <div
+        className="flex flex-col justify-between py-16 px-8 md:px-14 lg:px-20"
+        style={{ borderRight: '1px solid rgba(46,46,43,0.6)' }}
+      >
+        <div>
+          {/* Section label */}
+          <span
+            className="block text-[0.58rem] tracking-[0.22em] uppercase mb-5"
+            style={{ color: 'var(--color-stone-500)' }}
+          >
+            Section 04
+          </span>
+
+          {/* Heading */}
+          <h2
+            id="contact-heading"
+            className="font-black uppercase leading-none"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              color: 'var(--color-stone-100)',
+              fontFamily: 'var(--font-display)',
+              letterSpacing: '-0.03em',
+            }}
+          >
+            CONTACTO
+          </h2>
+
+          {/* Thin divider */}
+          <div
+            className="mt-8 mb-10 w-10"
+            style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
+            aria-hidden="true"
+          />
+        </div>
+
+        {/* Info blocks */}
+        <div className="space-y-8">
+          <div>
+            <p
+              className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Email
+            </p>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="text-sm transition-opacity duration-300 hover:opacity-60
+                         focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
+              style={{ color: 'var(--color-stone-200)' }}
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </div>
+
+          <div>
+            <p
+              className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Ubicación
+            </p>
+            <p className="text-sm" style={{ color: 'var(--color-stone-200)' }}>
+              {CONTACT_LOCATION}
+            </p>
+          </div>
+
+          <div>
+            <p
+              className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Trabajamos en
+            </p>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-stone-200)' }}>
+              {CONTACT_SERVICES}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Right column — Contact form */}
+      <div className="flex flex-col py-16 px-8 md:px-14 lg:px-20">
+        {/* Form label */}
+        <span
+          className="block text-[0.58rem] tracking-[0.22em] uppercase mb-8 md:mb-10"
+          style={{ color: 'var(--color-stone-500)' }}
+        >
+          Formulario de Contacto
+        </span>
+
+        <form
+          className="flex flex-col gap-8"
+          noValidate
+          onSubmit={handleSubmit}
+          aria-label="Formulario de contacto"
+        >
+          {/* Name */}
+          <div>
+            <label
+              htmlFor="contact-name"
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Nombre
+            </label>
+            <input
+              id="contact-name"
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Tu nombre completo"
+              aria-required="true"
+              className="form-input w-full bg-transparent text-sm py-3 outline-none
+                         placeholder:text-graphite-500"
+              style={{ color: 'var(--color-stone-200)' }}
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            <label
+              htmlFor="contact-email"
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Email
+            </label>
+            <input
+              id="contact-email"
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="tu@email.com"
+              aria-required="true"
+              className="form-input w-full bg-transparent text-sm py-3 outline-none
+                         placeholder:text-graphite-500"
+              style={{ color: 'var(--color-stone-200)' }}
+            />
+          </div>
+
+          {/* Project type */}
+          <div>
+            <label
+              htmlFor="contact-project"
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Tipo de Proyecto
+            </label>
+            <input
+              id="contact-project"
+              type="text"
+              name="project"
+              value={form.project}
+              onChange={handleChange}
+              placeholder="Web, e-commerce, software empresarial..."
+              className="form-input w-full bg-transparent text-sm py-3 outline-none
+                         placeholder:text-graphite-500"
+              style={{ color: 'var(--color-stone-200)' }}
+            />
+          </div>
+
+          {/* Message */}
+          <div>
+            <label
+              htmlFor="contact-message"
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
+              style={{ color: 'var(--color-stone-500)' }}
+            >
+              Mensaje
+            </label>
+            <textarea
+              id="contact-message"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              rows={4}
+              placeholder="Contanos sobre tu proyecto"
+              aria-required="true"
+              className="form-input w-full bg-transparent text-sm py-3 outline-none resize-none
+                         placeholder:text-graphite-500"
+              style={{ color: 'var(--color-stone-200)' }}
+            />
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isLoading}
+            aria-busy={isLoading}
+            className="mt-2 flex items-center gap-4 text-[0.58rem] tracking-[0.22em] uppercase
+                       transition-colors duration-300 group self-start
+                       disabled:opacity-50 disabled:cursor-not-allowed
+                       focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
+            style={{ color: 'var(--color-stone-300)' }}
+          >
+            {isLoading ? 'Enviando...' : 'Enviar Mensaje'}
+            <span
+              className="inline-block h-px transition-all duration-400 group-hover:opacity-50"
+              style={{ width: '2rem', background: 'currentColor' }}
+              aria-hidden="true"
+            />
+          </button>
+        </form>
+
+        {/* Live region for form feedback */}
+        <div
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          className="mt-6 text-sm min-h-5"
+          style={{
+            color: status === 'error' ? '#f87171' : 'var(--color-accent)',
+          }}
+        >
+          {status === 'success' && 'Mensaje enviado. Te contactamos pronto.'}
+          {status === 'error' && 'Hubo un error. Por favor intentá de nuevo.'}
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  /* Graphite palette */
+  --color-graphite-950: #0f0f0d;
+  --color-graphite-900: #141412;
+  --color-graphite-800: #1a1a18;
+  --color-graphite-700: #222220;
+  --color-graphite-600: #2e2e2b;
+  --color-graphite-500: #3a3a36;
+
+  /* Text scale */
+  --color-stone-500: #8a8a80;
+  --color-stone-400: #a0a098;
+  --color-stone-300: #b8b8b0;
+  --color-stone-200: #d0d0c8;
+  --color-stone-100: #e8e8e0;
+
+  /* Accent */
+  --color-accent: #c8b89a;
+  --color-cream: #f5f4ee;
+
+  /* Typography */
+  --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- Reset ---- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom cursor only active when mouse is detected (toggled via JS class) */
+html.using-mouse {
+  cursor: none;
+}
+
+/* ---- Body + Grain Texture ---- */
+body {
+  background-color: var(--color-graphite-800);
+  color: var(--color-stone-200);
+  font-family: var(--font-display);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+/* Grain noise overlay — SVG feTurbulence fractalNoise */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: overlay;
+}
+
+/* Radial vignette */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 45%,
+    rgba(10, 10, 8, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ---- Custom cursor ---- */
+.cursor {
+  position: fixed;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-stone-200);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+  will-change: transform;
+  left: -100px;
+  top: -100px;
+  opacity: 0;
+}
+
+html.using-mouse .cursor {
+  opacity: 1;
+}
+
+.cursor.hovering {
+  width: 36px;
+  height: 36px;
+  border-color: var(--color-accent);
+}
+
+/* Hide custom cursor on touch devices */
+@media (hover: none) {
+  html,
+  html.using-mouse {
+    cursor: auto !important;
+  }
+  .cursor {
+    display: none;
+  }
+}
+
+/* Form inputs: bottom border acts as focus indicator */
+.form-input {
+  border-bottom: 1px solid rgba(46, 46, 43, 0.8);
+  transition: border-color 0.2s;
+}
+
+.form-input:focus-visible {
+  border-bottom-color: var(--color-accent);
+  outline: none;
+}
+
+/* ---- Hero animations ---- */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroLineExpand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 2.5rem;
+  }
+}
+
+/* ---- Carousel content animation states ---- */
+.slide-content {
+  opacity: 0;
+  transform: translateY(1.2rem);
+}
+
+.slide-content.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.slide-content.active.delay-1 {
+  transition-delay: 0.1s;
+}
+
+.slide-content.active.delay-2 {
+  transition-delay: 0.22s;
+}
+
+.slide-content.active.delay-3 {
+  transition-delay: 0.34s;
+}
+
+/* ---- Text selection ---- */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-graphite-900);
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-graphite-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-graphite-600);
+  border-radius: 2px;
+}

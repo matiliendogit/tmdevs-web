@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Nav from '../components/Nav';
+import Hero from '../components/Hero';
+import SocialBar from '../components/SocialBar';
+import ServicesSection from '../components/ServicesSection';
+import Carousel from '../components/Carousel';
+import ContactSection from '../components/ContactSection';
+import Footer from '../components/Footer';
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+  title="TMdevs — Desarrollo de Software a Medida"
+  description="Desarrollamos aplicaciones web, e-commerce y software empresarial a medida. Soluciones tecnológicas que hacen crecer tu negocio. Consultanos hoy."
+>
+  <Nav client:load />
+  <SocialBar client:load />
+  <main>
+    <Hero client:load />
+    <section id="servicios">
+      <ServicesSection client:visible />
+    </section>
+    <section id="proyectos">
+      <Carousel client:visible />
+    </section>
+    <section id="contact">
+      <ContactSection client:visible />
+    </section>
+  </main>
+  <Footer client:visible />
 </Layout>

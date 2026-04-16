@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useInView } from '../hooks/useInView';
 import type { ContactFormState, FormStatus } from '../types/index';
 
 const CONTACT_EMAIL = 'hola@tmdevs.com';
@@ -13,6 +14,9 @@ export default function ContactSection() {
     message: '',
   });
   const [status, setStatus] = useState<FormStatus>('idle');
+
+  const [leftRef, leftInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+  const [rightRef, rightInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -43,13 +47,15 @@ export default function ContactSection() {
     <div className="w-full grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '100vh' }}>
       {/* Left column — Contact info */}
       <div
+        ref={leftRef}
         className="flex flex-col justify-between py-16 px-8 md:px-14 lg:px-20"
         style={{ borderRight: '1px solid rgba(46,46,43,0.6)' }}
       >
         <div>
           {/* Section label */}
           <span
-            className="block text-[0.58rem] tracking-[0.22em] uppercase mb-5"
+            className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5
+              ${leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-0' : 'opacity-0'}`}
             style={{ color: 'var(--color-stone-500)' }}
           >
             Section 04
@@ -58,7 +64,8 @@ export default function ContactSection() {
           {/* Heading */}
           <h2
             id="contact-heading"
-            className="font-black uppercase leading-none"
+            className={`font-black uppercase leading-none
+              ${leftInView ? 'animate-fade-in-up animate-duration-700 [animation-delay:100ms]' : 'opacity-0'}`}
             style={{
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               color: 'var(--color-stone-100)',
@@ -71,7 +78,8 @@ export default function ContactSection() {
 
           {/* Thin divider */}
           <div
-            className="mt-8 mb-10 w-10"
+            className={`mt-8 mb-10 w-10
+              ${leftInView ? 'animate-fade-in-up animate-duration-500 [animation-delay:200ms]' : 'opacity-0'}`}
             style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
             aria-hidden="true"
           />
@@ -79,7 +87,9 @@ export default function ContactSection() {
 
         {/* Info blocks */}
         <div className="space-y-8">
-          <div>
+          <div
+            className={leftInView ? 'animate-fade-in-up animate-duration-600 [animation-delay:300ms]' : 'opacity-0'}
+          >
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
               style={{ color: 'var(--color-stone-500)' }}
@@ -96,7 +106,9 @@ export default function ContactSection() {
             </a>
           </div>
 
-          <div>
+          <div
+            className={leftInView ? 'animate-fade-in-up animate-duration-600 [animation-delay:400ms]' : 'opacity-0'}
+          >
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
               style={{ color: 'var(--color-stone-500)' }}
@@ -108,7 +120,9 @@ export default function ContactSection() {
             </p>
           </div>
 
-          <div>
+          <div
+            className={leftInView ? 'animate-fade-in-up animate-duration-600 [animation-delay:500ms]' : 'opacity-0'}
+          >
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
               style={{ color: 'var(--color-stone-500)' }}
@@ -123,17 +137,19 @@ export default function ContactSection() {
       </div>
 
       {/* Right column — Contact form */}
-      <div className="flex flex-col py-16 px-8 md:px-14 lg:px-20">
+      <div ref={rightRef} className="flex flex-col py-16 px-8 md:px-14 lg:px-20">
         {/* Form label */}
         <span
-          className="block text-[0.58rem] tracking-[0.22em] uppercase mb-8 md:mb-10"
+          className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-8 md:mb-10
+            ${rightInView ? 'animate-fade-in-up animate-duration-600 animate-delay-0' : 'opacity-0'}`}
           style={{ color: 'var(--color-stone-500)' }}
         >
           Formulario de Contacto
         </span>
 
         <form
-          className="flex flex-col gap-8"
+          className={`flex flex-col gap-8
+            ${rightInView ? 'animate-fade-in-up animate-duration-700 [animation-delay:150ms]' : 'opacity-0'}`}
           noValidate
           onSubmit={handleSubmit}
           aria-label="Formulario de contacto"

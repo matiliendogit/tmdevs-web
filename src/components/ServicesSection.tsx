@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import type { Service } from '../types/index';
 
 const services: Service[] = [
@@ -32,20 +33,27 @@ const services: Service[] = [
 ];
 
 export default function ServicesSection() {
+  const [sectionRef, sectionInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
   return (
-    <div className="w-full py-24 md:py-32 px-8 md:px-14 lg:px-20">
+    <div ref={sectionRef} className="w-full py-24 md:py-32 px-8 md:px-14 lg:px-20">
 
       {/* Section header */}
       <div className="mb-16 md:mb-20">
         <span
-          className="block text-[0.58rem] tracking-[0.22em] uppercase mb-5"
-          style={{ color: 'var(--color-stone-500)' }}
+          className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5
+            ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
+          style={{
+            color: 'var(--color-stone-500)',
+            animationDelay: sectionInView ? '0ms' : undefined,
+          }}
         >
           Section 02
         </span>
         <h2
           id="servicios-heading"
-          className="font-black uppercase leading-none"
+          className={`font-black uppercase leading-none
+            ${sectionInView ? 'animate-fade-in-up animate-duration-700 [animation-delay:100ms]' : 'opacity-0'}`}
           style={{
             fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             color: 'var(--color-stone-100)',
@@ -56,7 +64,8 @@ export default function ServicesSection() {
           SERVICIOS
         </h2>
         <div
-          className="mt-8 w-10"
+          className={`mt-8 w-10
+            ${sectionInView ? 'animate-fade-in-up animate-duration-500 [animation-delay:200ms]' : 'opacity-0'}`}
           style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
           aria-hidden="true"
         />
@@ -67,11 +76,15 @@ export default function ServicesSection() {
         className="grid grid-cols-1 md:grid-cols-2 gap-px"
         style={{ background: 'rgba(46,46,43,0.4)', border: '1px solid rgba(46,46,43,0.4)' }}
       >
-        {services.map((service) => (
+        {services.map((service, index) => (
           <article
             key={service.id}
-            className="group relative p-10 md:p-12 lg:p-14"
-            style={{ background: 'var(--color-graphite-800)' }}
+            className={`group relative p-10 md:p-12 lg:p-14
+              ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
+            style={{
+              background: 'var(--color-graphite-800)',
+              animationDelay: sectionInView ? `${index * 100 + 300}ms` : undefined,
+            }}
           >
             {/* Service number (decorative) */}
             <span

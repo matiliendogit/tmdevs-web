@@ -1,18 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { Project } from '../types/index';
 
-function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
-  return reduced;
-}
-
 const projects: Project[] = [
   {
     id: '01',
@@ -100,19 +88,12 @@ export default function Carousel() {
   const [activeContent, setActiveContent] = useState(0);
   const touchStartX = useRef(0);
   const sectionRef = useRef<HTMLElement>(null);
-  const reducedMotion = usePrefersReducedMotion();
   const total = projects.length;
 
   const goTo = (index: number) => {
     if (animating) return;
 
     const next = ((index % total) + total) % total;
-
-    if (reducedMotion) {
-      setCurrent(next);
-      setActiveContent(next);
-      return;
-    }
 
     setAnimating(true);
     setActiveContent(-1);
@@ -139,7 +120,7 @@ export default function Carousel() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [current, animating, reducedMotion]);
+  }, [current, animating]);
 
   const isActive = (idx: number) => activeContent === idx;
 
@@ -148,15 +129,13 @@ export default function Carousel() {
       ref={sectionRef}
       className="relative w-full overflow-hidden"
       style={{ height: '100dvh' }}
-      aria-label="Proyectos"
-      aria-roledescription="carousel"
     >
       {/* Track */}
       <div
         className="flex w-full h-full"
         style={{
           transform: `translateX(-${current * 100}%)`,
-          transition: reducedMotion ? 'none' : 'transform 0.7s cubic-bezier(0.76, 0, 0.24, 1)',
+          transition: 'transform 0.7s cubic-bezier(0.76, 0, 0.24, 1)',
         }}
         onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
         onTouchEnd={(e) => {
@@ -167,10 +146,7 @@ export default function Carousel() {
         {projects.map((project, i) => (
           <article
             key={project.id}
-            aria-roledescription="slide"
-            aria-label={`${project.id} de ${total}: ${project.title}`}
             className="relative flex-shrink-0 w-full h-full flex items-center justify-center"
-            aria-hidden={i !== current}
           >
             <CornerMarks />
             <GhostImages index={i} />
@@ -240,8 +216,7 @@ export default function Carousel() {
               {/* CTA */}
               <a
                 href={project.ctaHref}
-                className={`slide-content delay-3 mt-7 md:mt-8 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase transition-colors duration-300 group ${isActive(i) ? 'active' : ''}
-                            focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm`}
+                className={`slide-content delay-3 mt-7 md:mt-8 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase transition-colors duration-300 group ${isActive(i) ? 'active' : ''}`}
                 style={{ color: 'var(--color-stone-300)' }}
               >
                 {project.cta}
@@ -262,11 +237,9 @@ export default function Carousel() {
       {/* Prev arrow */}
       <button
         onClick={() => goTo(current - 1)}
-        aria-label="Proyecto anterior"
         className="absolute left-2 md:left-5 top-1/2 -translate-y-1/2 z-20
                    w-9 h-9 md:w-11 md:h-11 flex items-center justify-center
-                   transition-colors duration-300 hover:opacity-60
-                   focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
+                   transition-colors duration-300 hover:opacity-60"
         style={{ color: 'var(--color-stone-400)' }}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -283,11 +256,9 @@ export default function Carousel() {
       {/* Next arrow */}
       <button
         onClick={() => goTo(current + 1)}
-        aria-label="Proyecto siguiente"
         className="absolute right-2 md:right-5 top-1/2 -translate-y-1/2 z-20
                    w-9 h-9 md:w-11 md:h-11 flex items-center justify-center
-                   transition-colors duration-300 hover:opacity-60
-                   focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
+                   transition-colors duration-300 hover:opacity-60"
         style={{ color: 'var(--color-stone-400)' }}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -302,17 +273,12 @@ export default function Carousel() {
       </button>
 
       {/* Dot indicators */}
-      <div
-        className="absolute bottom-7 md:bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
-      >
+      <div className="absolute bottom-7 md:bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
         {projects.map((_, i) => (
           <button
             key={i}
             onClick={() => goTo(i)}
-            aria-label={`Ir al proyecto ${i + 1}`}
-            aria-current={i === current ? 'true' : undefined}
-            className="h-[3px] rounded-full transition-all duration-400
-                       focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
+            className="h-[3px] rounded-full transition-all duration-400"
             style={{
               width: i === current ? '1.5rem' : '0.25rem',
               background: i === current ? 'var(--color-stone-300)' : 'rgba(138,138,128,0.35)',

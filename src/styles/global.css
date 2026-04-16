@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tailwind-animations";
 
 @theme {
   /* Graphite palette */
@@ -22,6 +23,14 @@
 
   /* Typography */
   --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Disable plugin animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  [class*="animate-"] {
+    animation: none !important;
+    opacity: 1 !important;
+  }
 }
 
 /* ---- Reset ---- */
@@ -168,6 +177,20 @@ html.using-mouse .cursor {
 
 .slide-content.active.delay-3 {
   transition-delay: 0.34s;
+}
+
+/* ---- Mobile menu overlay ---- */
+.mobile-menu-overlay {
+  opacity: 0;
+  transform: translateY(-1rem);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu-overlay.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* ---- Text selection ---- */

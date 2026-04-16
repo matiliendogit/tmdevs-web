@@ -99,14 +99,9 @@ export default function Nav() {
         role="dialog"
         aria-modal="true"
         aria-label="Menú de navegación"
-        className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 md:hidden
-                   transition-all duration-300"
-        style={{
-          background: "var(--color-graphite-900)",
-          opacity: open ? 1 : 0,
-          pointerEvents: open ? "auto" : "none",
-          transform: open ? "translateY(0)" : "translateY(-1rem)",
-        }}
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 md:hidden
+                   mobile-menu-overlay ${open ? "open" : ""}`}
+        style={{ background: "var(--color-graphite-900)" }}
         aria-hidden={!open}
       >
         {navLinks.map(({ label, href }) => (

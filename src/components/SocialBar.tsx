@@ -27,8 +27,9 @@ const socials: SocialEntry[] = [
 export default function SocialBar() {
   return (
     <div
-      className="fixed left-8 md:left-14 bottom-0 z-50 flex flex-col items-center gap-6 pb-0"
+      className="fixed left-4 md:left-5 bottom-0 z-50 flex flex-col items-center gap-6 pb-0"
       aria-label="Redes sociales"
+      style={{ animation: "heroFadeUp 0.7s ease 0.9s both" }}
     >
       {socials.map(({ label, href, Icon }) => (
         <a

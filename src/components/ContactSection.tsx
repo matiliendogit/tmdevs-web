@@ -44,19 +44,19 @@ export default function ContactSection() {
   const isLoading = status === 'loading';
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2" style={{ minHeight: '100vh' }}>
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 pt-28 md:min-h-dvh md:pt-40">
       {/* Left column — Contact info */}
       <div
         ref={leftRef}
-        className="flex flex-col justify-between py-16 px-8 md:px-14 lg:px-20"
-        style={{ borderRight: '1px solid rgba(46,46,43,0.6)' }}
+        className="flex flex-col justify-between px-10 pb-10 border-b md:border-b-0 md:border-r md:pl-12 md:pr-8 md:pb-52 lg:pl-20 lg:pr-10"
+        style={{ borderColor: 'rgba(46,46,43,0.6)' }}
       >
         <div>
           {/* Section label */}
           <span
             className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5
               ${leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-0' : 'opacity-0'}`}
-            style={{ color: 'var(--color-stone-500)' }}
+            style={{ color: 'var(--color-stone-400)' }}
           >
             Section 04
           </span>
@@ -65,7 +65,7 @@ export default function ContactSection() {
           <h2
             id="contact-heading"
             className={`font-black uppercase leading-none
-              ${leftInView ? 'animate-fade-in-up animate-duration-700 [animation-delay:100ms]' : 'opacity-0'}`}
+              ${leftInView ? 'animate-fade-in-up animate-duration-700 animate-delay-100' : 'opacity-0'}`}
             style={{
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               color: 'var(--color-stone-100)',
@@ -79,7 +79,7 @@ export default function ContactSection() {
           {/* Thin divider */}
           <div
             className={`mt-8 mb-10 w-10
-              ${leftInView ? 'animate-fade-in-up animate-duration-500 [animation-delay:200ms]' : 'opacity-0'}`}
+              ${leftInView ? 'animate-fade-in-up animate-duration-500 animate-delay-200' : 'opacity-0'}`}
             style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
             aria-hidden="true"
           />
@@ -88,11 +88,11 @@ export default function ContactSection() {
         {/* Info blocks */}
         <div className="space-y-8">
           <div
-            className={leftInView ? 'animate-fade-in-up animate-duration-600 [animation-delay:300ms]' : 'opacity-0'}
+            className={leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-300' : 'opacity-0'}
           >
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
-              style={{ color: 'var(--color-stone-500)' }}
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Email
             </p>
@@ -100,36 +100,36 @@ export default function ContactSection() {
               href={`mailto:${CONTACT_EMAIL}`}
               className="text-sm transition-opacity duration-300 hover:opacity-60
                          focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
-              style={{ color: 'var(--color-stone-200)' }}
+              style={{ color: 'var(--color-stone-100)' }}
             >
               {CONTACT_EMAIL}
             </a>
           </div>
 
           <div
-            className={leftInView ? 'animate-fade-in-up animate-duration-600 [animation-delay:400ms]' : 'opacity-0'}
+            className={leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-400' : 'opacity-0'}
           >
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
-              style={{ color: 'var(--color-stone-500)' }}
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Ubicación
             </p>
-            <p className="text-sm" style={{ color: 'var(--color-stone-200)' }}>
+            <p className="text-sm" style={{ color: 'var(--color-stone-100)' }}>
               {CONTACT_LOCATION}
             </p>
           </div>
 
           <div
-            className={leftInView ? 'animate-fade-in-up animate-duration-600 [animation-delay:500ms]' : 'opacity-0'}
+            className={leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-500' : 'opacity-0'}
           >
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
-              style={{ color: 'var(--color-stone-500)' }}
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Trabajamos en
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-stone-200)' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-stone-100)' }}>
               {CONTACT_SERVICES}
             </p>
           </div>
@@ -137,19 +137,19 @@ export default function ContactSection() {
       </div>
 
       {/* Right column — Contact form */}
-      <div ref={rightRef} className="flex flex-col py-16 px-8 md:px-14 lg:px-20">
+      <div ref={rightRef} className="flex flex-col px-10 pb-48 md:pl-8 md:pr-12 md:pb-52 lg:pl-10 lg:pr-20">
         {/* Form label */}
         <span
-          className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-8 md:mb-10
+          className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5 md:mb-10
             ${rightInView ? 'animate-fade-in-up animate-duration-600 animate-delay-0' : 'opacity-0'}`}
-          style={{ color: 'var(--color-stone-500)' }}
+          style={{ color: 'var(--color-stone-400)' }}
         >
           Formulario de Contacto
         </span>
 
         <form
-          className={`flex flex-col gap-8
-            ${rightInView ? 'animate-fade-in-up animate-duration-700 [animation-delay:150ms]' : 'opacity-0'}`}
+          className={`flex flex-col gap-5 md:gap-8
+            ${rightInView ? 'animate-fade-in-up animate-duration-700 animate-delay-150' : 'opacity-0'}`}
           noValidate
           onSubmit={handleSubmit}
           aria-label="Formulario de contacto"
@@ -158,8 +158,8 @@ export default function ContactSection() {
           <div>
             <label
               htmlFor="contact-name"
-              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
-              style={{ color: 'var(--color-stone-500)' }}
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-1.5 md:mb-3"
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Nombre
             </label>
@@ -171,9 +171,9 @@ export default function ContactSection() {
               onChange={handleChange}
               placeholder="Tu nombre completo"
               aria-required="true"
-              className="form-input w-full bg-transparent text-sm py-3 outline-none
+              className="form-input w-full bg-transparent text-sm py-2 md:py-3 outline-none
                          placeholder:text-graphite-500"
-              style={{ color: 'var(--color-stone-200)' }}
+              style={{ color: 'var(--color-stone-100)' }}
             />
           </div>
 
@@ -181,8 +181,8 @@ export default function ContactSection() {
           <div>
             <label
               htmlFor="contact-email"
-              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
-              style={{ color: 'var(--color-stone-500)' }}
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-1.5 md:mb-3"
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Email
             </label>
@@ -194,9 +194,9 @@ export default function ContactSection() {
               onChange={handleChange}
               placeholder="tu@email.com"
               aria-required="true"
-              className="form-input w-full bg-transparent text-sm py-3 outline-none
+              className="form-input w-full bg-transparent text-sm py-2 md:py-3 outline-none
                          placeholder:text-graphite-500"
-              style={{ color: 'var(--color-stone-200)' }}
+              style={{ color: 'var(--color-stone-100)' }}
             />
           </div>
 
@@ -204,8 +204,8 @@ export default function ContactSection() {
           <div>
             <label
               htmlFor="contact-project"
-              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
-              style={{ color: 'var(--color-stone-500)' }}
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-1.5 md:mb-3"
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Tipo de Proyecto
             </label>
@@ -216,9 +216,9 @@ export default function ContactSection() {
               value={form.project}
               onChange={handleChange}
               placeholder="Web, e-commerce, software empresarial..."
-              className="form-input w-full bg-transparent text-sm py-3 outline-none
+              className="form-input w-full bg-transparent text-sm py-2 md:py-3 outline-none
                          placeholder:text-graphite-500"
-              style={{ color: 'var(--color-stone-200)' }}
+              style={{ color: 'var(--color-stone-100)' }}
             />
           </div>
 
@@ -226,8 +226,8 @@ export default function ContactSection() {
           <div>
             <label
               htmlFor="contact-message"
-              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-3"
-              style={{ color: 'var(--color-stone-500)' }}
+              className="block text-[0.55rem] tracking-[0.22em] uppercase mb-1.5 md:mb-3"
+              style={{ color: 'var(--color-stone-400)' }}
             >
               Mensaje
             </label>
@@ -236,12 +236,12 @@ export default function ContactSection() {
               name="message"
               value={form.message}
               onChange={handleChange}
-              rows={4}
+              rows={3}
               placeholder="Contanos sobre tu proyecto"
               aria-required="true"
-              className="form-input w-full bg-transparent text-sm py-3 outline-none resize-none
+              className="form-input w-full bg-transparent text-sm py-2 md:py-3 outline-none resize-none
                          placeholder:text-graphite-500"
-              style={{ color: 'var(--color-stone-200)' }}
+              style={{ color: 'var(--color-stone-100)' }}
             />
           </div>
 
@@ -254,7 +254,7 @@ export default function ContactSection() {
                        transition-colors duration-300 group self-start
                        disabled:opacity-50 disabled:cursor-not-allowed
                        focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
-            style={{ color: 'var(--color-stone-300)' }}
+            style={{ color: 'var(--color-stone-100)' }}
           >
             {isLoading ? 'Enviando...' : 'Enviar Mensaje'}
             <span

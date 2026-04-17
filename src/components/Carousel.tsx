@@ -200,7 +200,7 @@ export default function Carousel() {
               {/* Subtitle */}
               <p
                 className={`slide-content delay-1 mt-3 md:mt-4 text-[0.62rem] tracking-[0.22em] uppercase ${isActive(i) ? 'active' : ''}`}
-                style={{ color: 'var(--color-stone-500)' }}
+                style={{ color: 'var(--color-stone-400)' }}
               >
                 {project.subtitle}
               </p>
@@ -208,7 +208,7 @@ export default function Carousel() {
               {/* Description */}
               <p
                 className={`slide-content delay-2 mt-5 md:mt-6 text-sm leading-relaxed max-w-xs md:max-w-sm ${isActive(i) ? 'active' : ''}`}
-                style={{ color: 'var(--color-stone-400)' }}
+                style={{ color: 'var(--color-stone-200)' }}
               >
                 {project.description}
               </p>
@@ -217,7 +217,7 @@ export default function Carousel() {
               <a
                 href={project.ctaHref}
                 className={`slide-content delay-3 mt-7 md:mt-8 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase transition-colors duration-300 group ${isActive(i) ? 'active' : ''}`}
-                style={{ color: 'var(--color-stone-300)' }}
+                style={{ color: 'var(--color-stone-100)' }}
               >
                 {project.cta}
                 <span

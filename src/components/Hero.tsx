@@ -84,7 +84,7 @@ export default function Hero() {
         <h1
           className="font-black leading-none"
           style={{
-            fontSize: "clamp(4.5rem, 14vw, 5rem)",
+            fontSize: "clamp(2.4rem, 12vw, 5rem)",
             color: "var(--color-stone-100)",
             fontFamily: "var(--font-display)",
             letterSpacing: "-0.03em",
@@ -106,12 +106,9 @@ export default function Hero() {
 
         {/* Tag below */}
         <p
+          className="hero-subtitle"
           style={{
             color: "var(--color-stone-200)",
-            fontSize: "0.9rem",
-            letterSpacing: "0.28em",
-            textTransform: "uppercase",
-            lineHeight: "1.8",
             animation: "heroFadeUp 0.7s ease 0.18s both",
           }}
         >

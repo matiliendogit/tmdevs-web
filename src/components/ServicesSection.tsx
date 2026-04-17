@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useInView } from '../hooks/useInView';
 import type { Service } from '../types/index';
 
@@ -32,14 +33,42 @@ const services: Service[] = [
   },
 ];
 
+const getPreview = (desc: string) => desc.split(' ').slice(0, 4).join(' ');
+
+const TagList = ({ tags }: { tags: string[] }) => (
+  <ul className="flex flex-wrap gap-2" aria-label="Tecnologías">
+    {tags.map((tag) => (
+      <li
+        key={tag}
+        className="text-[0.55rem] tracking-[0.18em] uppercase px-2.5 py-1 rounded-sm"
+        style={{
+          color: 'var(--color-stone-400)',
+          border: '1px solid rgba(138,138,128,0.3)',
+        }}
+      >
+        {tag}
+      </li>
+    ))}
+  </ul>
+);
+
 export default function ServicesSection() {
   const [sectionRef, sectionInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
+
+  const toggle = (id: string) => {
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
 
   return (
-    <div ref={sectionRef} className="w-full py-24 md:py-32 px-8 md:px-14 lg:px-20">
+    <div ref={sectionRef} className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20">
 
       {/* Section header */}
-      <div className="mb-16 md:mb-20">
+      <div className="mb-10 md:mb-20">
         <span
           className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5
             ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
@@ -64,76 +93,117 @@ export default function ServicesSection() {
           SERVICIOS
         </h2>
         <div
-          className={`mt-8 w-10
+          className={`mt-6 md:mt-8 w-10
             ${sectionInView ? 'animate-fade-in-up animate-duration-500 [animation-delay:200ms]' : 'opacity-0'}`}
           style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
           aria-hidden="true"
         />
       </div>
 
-      {/* Services grid — gap-px + wrapper bg creates clean 1px dividers */}
+      {/* Services grid */}
       <div
         className="grid grid-cols-1 md:grid-cols-2 gap-px"
         style={{ background: 'rgba(46,46,43,0.4)', border: '1px solid rgba(46,46,43,0.4)' }}
       >
-        {services.map((service, index) => (
-          <article
-            key={service.id}
-            className={`group relative p-10 md:p-12 lg:p-14
-              ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
-            style={{
-              background: 'var(--color-graphite-800)',
-              animationDelay: sectionInView ? `${index * 100 + 300}ms` : undefined,
-            }}
-          >
-            {/* Service number (decorative) */}
-            <span
-              className="absolute top-8 right-10 text-[0.55rem] tracking-[0.28em] uppercase"
-              style={{ color: 'var(--color-graphite-600)' }}
-              aria-hidden="true"
-            >
-              {service.id}
-            </span>
+        {services.map((service, index) => {
+          const isExpanded = expandedIds.has(service.id);
 
-            {/* Title */}
-            <h3
-              className="font-black uppercase leading-tight mb-5 transition-colors duration-300
-                         group-hover:text-[--color-accent]"
+          return (
+            <article
+              key={service.id}
+              className={`group relative p-8 md:p-12 lg:p-14
+                ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
               style={{
-                fontSize: 'clamp(1.4rem, 2.5vw, 2rem)',
-                color: 'var(--color-stone-100)',
-                fontFamily: 'var(--font-display)',
-                letterSpacing: '-0.02em',
+                background: 'var(--color-graphite-800)',
+                animationDelay: sectionInView ? `${index * 100 + 300}ms` : undefined,
               }}
             >
-              {service.title}
-            </h3>
+              {/* Service number (decorative) */}
+              <span
+                className="absolute top-6 right-7 md:top-8 md:right-10 text-[0.55rem] tracking-[0.28em] uppercase"
+                style={{ color: 'var(--color-graphite-600)' }}
+                aria-hidden="true"
+              >
+                {service.id}
+              </span>
 
-            {/* Description */}
-            <p
-              className="text-sm leading-relaxed mb-6"
-              style={{ color: 'var(--color-stone-400)' }}
-            >
-              {service.description}
-            </p>
+              {/* Title */}
+              <h3
+                className="font-black uppercase leading-tight mb-3 md:mb-5 transition-colors duration-300
+                           group-hover:text-[--color-accent]"
+                style={{
+                  fontSize: 'clamp(1.1rem, 3.8vw, 2rem)',
+                  color: 'var(--color-stone-100)',
+                  fontFamily: 'var(--font-display)',
+                  letterSpacing: '-0.02em',
+                }}
+              >
+                {service.title}
+              </h3>
 
-            {/* Tags */}
-            <ul className="flex flex-wrap gap-2" aria-label="Tecnologías">
-              {service.tags.map((tag) => (
-                <li
-                  key={tag}
-                  className="text-[0.5rem] tracking-[0.18em] uppercase px-2.5 py-1 rounded-sm"
+              {/* ── Mobile: expandable description ── */}
+              <div className="md:hidden">
+                {/* Collapsed preview + toggle */}
+                <button
+                  onClick={() => toggle(service.id)}
+                  aria-expanded={isExpanded}
+                  aria-controls={`service-desc-${service.id}`}
+                  className="w-full text-left flex items-start justify-between gap-3 group/toggle"
+                >
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: 'var(--color-stone-200)' }}
+                  >
+                    {getPreview(service.description)}
+                    <span style={{ color: 'var(--color-stone-400)' }}>…</span>
+                  </p>
+                  <span
+                    className="flex-shrink-0 mt-0.5 text-base font-light leading-none transition-transform duration-400"
+                    style={{
+                      color: 'var(--color-accent)',
+                      transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)',
+                      display: 'inline-block',
+                    }}
+                    aria-hidden="true"
+                  >
+                    +
+                  </span>
+                </button>
+
+                {/* Expand panel — grid-template-rows trick for smooth height animation */}
+                <div
+                  id={`service-desc-${service.id}`}
                   style={{
-                    color: 'var(--color-stone-500)',
-                    border: '1px solid rgba(46,46,43,0.8)',
+                    display: 'grid',
+                    gridTemplateRows: isExpanded ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                   }}
                 >
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          </article>
-        ))}
+                  <div style={{ overflow: 'hidden' }}>
+                    <p
+                      className="text-sm leading-relaxed mt-4 mb-5"
+                      style={{ color: 'var(--color-stone-200)' }}
+                    >
+                      {service.description}
+                    </p>
+                    <TagList tags={service.tags} />
+                  </div>
+                </div>
+              </div>
+
+              {/* ── Desktop: full description always visible ── */}
+              <div className="hidden md:block">
+                <p
+                  className="text-sm leading-relaxed mb-6"
+                  style={{ color: 'var(--color-stone-200)' }}
+                >
+                  {service.description}
+                </p>
+                <TagList tags={service.tags} />
+              </div>
+            </article>
+          );
+        })}
       </div>
     </div>
   );

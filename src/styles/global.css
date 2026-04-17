@@ -11,11 +11,11 @@
   --color-graphite-500: #3a3a36;
 
   /* Text scale */
-  --color-stone-500: #8a8a80;
-  --color-stone-400: #a0a098;
-  --color-stone-300: #b8b8b0;
-  --color-stone-200: #d0d0c8;
-  --color-stone-100: #e8e8e0;
+  --color-stone-500: #a8a8a0;
+  --color-stone-400: #c0c0b8;
+  --color-stone-300: #d0d0c8;
+  --color-stone-200: #e0e0d8;
+  --color-stone-100: #f2f2ea;
 
   /* Accent */
   --color-accent: #c8b89a;
@@ -37,6 +37,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 1.0625rem; /* 17px base — mejora legibilidad general */
 }
 
 /* Custom cursor only active when mouse is detected (toggled via JS class) */
@@ -46,8 +47,8 @@ html.using-mouse {
 
 /* ---- Body + Grain Texture ---- */
 body {
-  background-color: var(--color-graphite-800);
-  color: var(--color-stone-200);
+  background-color: var(--color-graphite-700);
+  color: var(--color-stone-100);
   font-family: var(--font-display);
   min-height: 100dvh;
   overflow-x: hidden;
@@ -59,7 +60,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.05;
+  opacity: 0.4;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
@@ -132,6 +133,21 @@ html.using-mouse .cursor {
   outline: none;
 }
 
+/* ---- Hero subtitle — responsive size + tracking ---- */
+.hero-subtitle {
+  font-size: clamp(0.68rem, 2.2vw, 0.9rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+
+@media (min-width: 768px) {
+  .hero-subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.28em;
+  }
+}
+
 /* ---- Hero animations ---- */
 @keyframes heroFadeUp {
   from {
@@ -184,7 +200,9 @@ html.using-mouse .cursor {
   opacity: 0;
   transform: translateY(-1rem);
   pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .mobile-menu-overlay.open {

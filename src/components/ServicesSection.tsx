@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useInView } from '../hooks/useInView';
 import type { Service } from '../types/index';
 
 const services: Service[] = [
@@ -7,35 +6,35 @@ const services: Service[] = [
     id: '01',
     title: 'Aplicaciones Web',
     description:
-      'Desarrollo a medida de plataformas web modernas. Dashboards, SaaS, portales internos y herramientas de gestión adaptadas a tu negocio.',
+      'Reducí tiempos operativos con plataformas web hechas a medida: dashboards, SaaS y portales que tu equipo adopta de inmediato.',
     tags: ['React', 'Node.js', 'TypeScript'],
   },
   {
     id: '02',
     title: 'E-Commerce',
     description:
-      'Tiendas online de alto rendimiento con pasarelas de pago, catálogos dinámicos y analítica en tiempo real para maximizar tus ventas.',
+      'Multiplicá tus ventas con tiendas online rápidas, seguras y optimizadas para convertir — integradas con tus sistemas actuales.',
     tags: ['Next.js', 'Stripe', 'PostgreSQL'],
   },
   {
     id: '03',
     title: 'Software Empresarial',
     description:
-      'Automatización de procesos, ERPs y CRMs a medida. Sistemas que escalan con el crecimiento de tu empresa y se integran con tus operaciones.',
+      'Automatizá procesos críticos y conectá tus herramientas en una sola plataforma escalable, sin fricciones ni silos de información.',
     tags: ['API REST', 'Microservices', 'Cloud'],
   },
   {
     id: '04',
     title: 'APIs e Integraciones',
     description:
-      'Conexión con plataformas externas, pasarelas de pago, CRMs y cualquier servicio de terceros que tu negocio necesite para operar.',
+      'Conectá cualquier sistema o herramienta en días, no meses. APIs robustas que no fallan cuando más las necesitás.',
     tags: ['REST', 'GraphQL', 'Webhooks'],
   },
 ];
 
 const getPreview = (desc: string) => desc.split(' ').slice(0, 4).join(' ');
 
-const TagList = ({ tags }: { tags: string[] }) => (
+const TagList = ({ tags }: { readonly tags: string[] }) => (
   <ul className="flex flex-wrap gap-2" aria-label="Tecnologías">
     {tags.map((tag) => (
       <li
@@ -53,7 +52,6 @@ const TagList = ({ tags }: { tags: string[] }) => (
 );
 
 export default function ServicesSection() {
-  const [sectionRef, sectionInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const toggle = (id: string) => {
@@ -65,24 +63,19 @@ export default function ServicesSection() {
   };
 
   return (
-    <div ref={sectionRef} className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20">
+    <div className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20">
 
       {/* Section header */}
-      <div className="mb-10 md:mb-20">
+      <div className="mb-10 md:mb-20 animate-fade-in timeline-view animate-range-[entry_0%_entry_100%]">
         <span
-          className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5
-            ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
-          style={{
-            color: 'var(--color-stone-500)',
-            animationDelay: sectionInView ? '0ms' : undefined,
-          }}
+          className="block text-[0.58rem] tracking-[0.22em] uppercase mb-5"
+          style={{ color: 'var(--color-stone-500)' }}
         >
           Section 02
         </span>
         <h2
           id="servicios-heading"
-          className={`font-black uppercase leading-none
-            ${sectionInView ? 'animate-fade-in-up animate-duration-700 [animation-delay:100ms]' : 'opacity-0'}`}
+          className="font-black uppercase leading-none"
           style={{
             fontSize: 'clamp(2.5rem, 6vw, 5rem)',
             color: 'var(--color-stone-100)',
@@ -93,8 +86,7 @@ export default function ServicesSection() {
           SERVICIOS
         </h2>
         <div
-          className={`mt-6 md:mt-8 w-10
-            ${sectionInView ? 'animate-fade-in-up animate-duration-500 [animation-delay:200ms]' : 'opacity-0'}`}
+          className="mt-6 md:mt-8 w-10"
           style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
           aria-hidden="true"
         />
@@ -105,18 +97,14 @@ export default function ServicesSection() {
         className="grid grid-cols-1 md:grid-cols-2 gap-px"
         style={{ background: 'rgba(46,46,43,0.4)', border: '1px solid rgba(46,46,43,0.4)' }}
       >
-        {services.map((service, index) => {
+        {services.map((service) => {
           const isExpanded = expandedIds.has(service.id);
 
           return (
             <article
               key={service.id}
-              className={`group relative p-8 md:p-12 lg:p-14
-                ${sectionInView ? 'animate-fade-in-up animate-duration-700' : 'opacity-0'}`}
-              style={{
-                background: 'var(--color-graphite-800)',
-                animationDelay: sectionInView ? `${index * 100 + 300}ms` : undefined,
-              }}
+              className="group relative p-8 md:p-12 lg:p-14 animate-zoom-in timeline-view animate-range-[entry_0%_entry_100%]"
+              style={{ background: 'var(--color-graphite-800)' }}
             >
               {/* Service number (decorative) */}
               <span
@@ -143,7 +131,6 @@ export default function ServicesSection() {
 
               {/* ── Mobile: expandable description ── */}
               <div className="md:hidden">
-                {/* Collapsed preview + toggle */}
                 <button
                   onClick={() => toggle(service.id)}
                   aria-expanded={isExpanded}
@@ -170,7 +157,6 @@ export default function ServicesSection() {
                   </span>
                 </button>
 
-                {/* Expand panel — grid-template-rows trick for smooth height animation */}
                 <div
                   id={`service-desc-${service.id}`}
                   style={{
@@ -187,6 +173,13 @@ export default function ServicesSection() {
                       {service.description}
                     </p>
                     <TagList tags={service.tags} />
+                    <a
+                      href="#contacto"
+                      className="inline-block mt-5 text-[0.6rem] tracking-[0.16em] uppercase transition-colors duration-300"
+                      style={{ color: 'var(--color-accent)' }}
+                    >
+                      Hablar sobre mi proyecto →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -200,6 +193,13 @@ export default function ServicesSection() {
                   {service.description}
                 </p>
                 <TagList tags={service.tags} />
+                <a
+                  href="#contacto"
+                  className="inline-block mt-6 text-[0.6rem] tracking-[0.16em] uppercase transition-colors duration-300 hover:opacity-70"
+                  style={{ color: 'var(--color-accent)' }}
+                >
+                  Hablar sobre mi proyecto →
+                </a>
               </div>
             </article>
           );

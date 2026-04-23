@@ -114,6 +114,60 @@ export default function Hero() {
         >
           Software / Solutions
         </p>
+
+        {/* Subheadline */}
+        <p
+          style={{
+            color: "var(--color-stone-400)",
+            fontSize: "clamp(0.8rem, 2vw, 1rem)",
+            letterSpacing: "0.02em",
+            maxWidth: "36rem",
+            lineHeight: "1.6",
+            marginTop: "1.75rem",
+            animation: "heroFadeUp 0.7s ease 0.28s both",
+          }}
+        >
+          Construimos aplicaciones web, e-commerce y software empresarial que escalan con tu negocio.
+        </p>
+
+        {/* Primary CTA */}
+        <a
+          href="#proyectos"
+          style={{
+            display: "inline-block",
+            marginTop: "2rem",
+            padding: "0.85rem 2.25rem",
+            background: "var(--color-accent)",
+            color: "var(--color-graphite-950)",
+            fontSize: "0.7rem",
+            fontWeight: 700,
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            textDecoration: "none",
+            borderRadius: "2px",
+            minHeight: "44px",
+            animation: "heroFadeUp 0.7s ease 0.38s both",
+            transition: "opacity 0.2s ease",
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        >
+          Ver nuestros proyectos
+        </a>
+
+        {/* Social proof snippet */}
+        <p
+          style={{
+            color: "var(--color-stone-500)",
+            fontSize: "0.58rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            marginTop: "1.5rem",
+            animation: "heroFadeUp 0.7s ease 0.48s both",
+          }}
+        >
+          10+ proyectos entregados &nbsp;·&nbsp; Buenos Aires, Argentina
+        </p>
       </div>
     </section>
   );

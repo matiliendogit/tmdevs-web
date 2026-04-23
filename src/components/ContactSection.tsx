@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useInView } from '../hooks/useInView';
 import type { ContactFormState, FormStatus } from '../types/index';
 
 const CONTACT_EMAIL = 'hola@tmdevs.com';
@@ -15,9 +14,6 @@ export default function ContactSection() {
   });
   const [status, setStatus] = useState<FormStatus>('idle');
 
-  const [leftRef, leftInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
-  const [rightRef, rightInView] = useInView<HTMLDivElement>({ threshold: 0.1 });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -27,12 +23,6 @@ export default function ContactSection() {
     setStatus('loading');
     try {
       // TODO: Replace with real endpoint when backend is ready
-      // const res = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(form),
-      // });
-      // if (!res.ok) throw new Error('Server error');
       await new Promise((resolve) => setTimeout(resolve, 800));
       setStatus('success');
       setForm({ name: '', email: '', project: '', message: '' });
@@ -47,25 +37,20 @@ export default function ContactSection() {
     <div className="w-full grid grid-cols-1 md:grid-cols-2 pt-28 md:min-h-dvh md:pt-40">
       {/* Left column — Contact info */}
       <div
-        ref={leftRef}
         className="flex flex-col justify-between px-10 pb-10 border-b md:border-b-0 md:border-r md:pl-12 md:pr-8 md:pb-52 lg:pl-20 lg:pr-10"
         style={{ borderColor: 'rgba(46,46,43,0.6)' }}
       >
         <div>
-          {/* Section label */}
           <span
-            className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5
-              ${leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-0' : 'opacity-0'}`}
+            className="block text-[0.58rem] tracking-[0.22em] uppercase mb-5"
             style={{ color: 'var(--color-stone-400)' }}
           >
             Section 04
           </span>
 
-          {/* Heading */}
           <h2
             id="contact-heading"
-            className={`font-black uppercase leading-none
-              ${leftInView ? 'animate-fade-in-up animate-duration-700 animate-delay-100' : 'opacity-0'}`}
+            className="font-black uppercase leading-none"
             style={{
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               color: 'var(--color-stone-100)',
@@ -76,10 +61,8 @@ export default function ContactSection() {
             CONTACTO
           </h2>
 
-          {/* Thin divider */}
           <div
-            className={`mt-8 mb-10 w-10
-              ${leftInView ? 'animate-fade-in-up animate-duration-500 animate-delay-200' : 'opacity-0'}`}
+            className="mt-8 mb-10 w-10"
             style={{ height: '1px', background: 'rgba(138,138,128,0.2)' }}
             aria-hidden="true"
           />
@@ -87,9 +70,7 @@ export default function ContactSection() {
 
         {/* Info blocks */}
         <div className="space-y-8">
-          <div
-            className={leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-300' : 'opacity-0'}
-          >
+          <div>
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
               style={{ color: 'var(--color-stone-400)' }}
@@ -106,9 +87,7 @@ export default function ContactSection() {
             </a>
           </div>
 
-          <div
-            className={leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-400' : 'opacity-0'}
-          >
+          <div>
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
               style={{ color: 'var(--color-stone-400)' }}
@@ -120,9 +99,7 @@ export default function ContactSection() {
             </p>
           </div>
 
-          <div
-            className={leftInView ? 'animate-fade-in-up animate-duration-600 animate-delay-500' : 'opacity-0'}
-          >
+          <div>
             <p
               className="text-[0.58rem] tracking-[0.22em] uppercase mb-2"
               style={{ color: 'var(--color-stone-400)' }}
@@ -137,19 +114,16 @@ export default function ContactSection() {
       </div>
 
       {/* Right column — Contact form */}
-      <div ref={rightRef} className="flex flex-col px-10 pb-48 md:pl-8 md:pr-12 md:pb-52 lg:pl-10 lg:pr-20">
-        {/* Form label */}
+      <div className="flex flex-col px-10 pb-48 md:pl-8 md:pr-12 md:pb-52 lg:pl-10 lg:pr-20">
         <span
-          className={`block text-[0.58rem] tracking-[0.22em] uppercase mb-5 md:mb-10
-            ${rightInView ? 'animate-fade-in-up animate-duration-600 animate-delay-0' : 'opacity-0'}`}
+          className="block text-[0.58rem] tracking-[0.22em] uppercase mb-5 md:mb-10"
           style={{ color: 'var(--color-stone-400)' }}
         >
           Formulario de Contacto
         </span>
 
         <form
-          className={`flex flex-col gap-5 md:gap-8
-            ${rightInView ? 'animate-fade-in-up animate-duration-700 animate-delay-150' : 'opacity-0'}`}
+          className="flex flex-col gap-5 md:gap-8"
           noValidate
           onSubmit={handleSubmit}
           aria-label="Formulario de contacto"

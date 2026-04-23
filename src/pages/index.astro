@@ -4,12 +4,13 @@ import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import SocialBar from '../components/SocialBar';
 import ServicesSection from '../components/ServicesSection';
+import ProcessSection from '../components/ProcessSection';
 import Carousel from '../components/Carousel';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 ---
 
-<Layout 
+<Layout
   title="TMdevs — Desarrollo de Software a Medida"
   description="Desarrollamos aplicaciones web, e-commerce y software empresarial a medida. Soluciones tecnológicas que hacen crecer tu negocio. Consultanos hoy."
 >
@@ -20,12 +21,17 @@ import Footer from '../components/Footer';
     <section id="servicios">
       <ServicesSection client:visible />
     </section>
+    <section id="proceso">
+      <ProcessSection client:visible />
+    </section>
     <section id="proyectos">
       <Carousel client:visible />
     </section>
-    <section id="contact">
+    <section id="contacto">
       <ContactSection client:visible />
     </section>
   </main>
-  <Footer client:visible />
+  <div>
+    <Footer client:visible />
+  </div>
 </Layout>

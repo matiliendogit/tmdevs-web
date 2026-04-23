@@ -57,7 +57,7 @@ function CornerMarks() {
   );
 }
 
-function GhostImages({ index }: { index: number }) {
+function GhostImages({ index }: { readonly index: number }) {
   const colors = [
     ['bg-stone-700', 'bg-stone-600'],
     ['bg-stone-600', 'bg-stone-500'],

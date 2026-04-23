@@ -6,7 +6,7 @@ import type { NavLink } from "../types/index";
 const navLinks: NavLink[] = [
   { label: "Servicios", href: "#servicios" },
   { label: "Proyectos", href: "#proyectos" },
-  { label: "Contacto", href: "#contact" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 export default function Nav() {
@@ -56,7 +56,10 @@ export default function Nav() {
             src={logoFull.src}
             alt="TMdevs"
             className="h-11 md:h-14 w-auto"
-            style={{ display: "block", filter: "brightness(1.25) contrast(1.1)" }}
+            style={{
+              display: "block",
+              filter: "brightness(1.25) contrast(1.1)",
+            }}
           />
         </a>
 

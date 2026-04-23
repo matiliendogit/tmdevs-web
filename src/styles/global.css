@@ -25,14 +25,6 @@
   --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Disable plugin animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  [class*="animate-"] {
-    animation: none !important;
-    opacity: 1 !important;
-  }
-}
-
 /* ---- Reset ---- */
 
 html {
@@ -60,7 +52,7 @@ body::before {
   position: fixed;
   inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.4;
+  opacity: 0.05;
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: overlay;
@@ -74,10 +66,10 @@ body::after {
   background: radial-gradient(
     ellipse at center,
     transparent 45%,
-    rgba(10, 10, 8, 0.65) 100%
+    rgba(10, 10, 8, 0.5) 100%
   );
   pointer-events: none;
-  z-index: 9998;
+  z-index: 5;
 }
 
 /* ---- Custom cursor ---- */

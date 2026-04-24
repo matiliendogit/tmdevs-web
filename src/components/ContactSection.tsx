@@ -2,8 +2,8 @@ import { useState } from 'react';
 import type { ContactFormState, FormStatus } from '../types/index';
 
 const CONTACT_EMAIL = 'hola@tmdevs.com';
-const CONTACT_LOCATION = 'Argentina';
-const CONTACT_SERVICES = 'Aplicaciones Web · E-Commerce · Software Empresarial';
+const CONTACT_LOCATION = 'Córdoba · La Pampa, Argentina';
+const CONTACT_SERVICES = 'Sitios Web · Web Apps & PWA · Software para Laboratorios';
 
 export default function ContactSection() {
   const [form, setForm] = useState<ContactFormState>({
@@ -189,7 +189,7 @@ export default function ContactSection() {
               name="project"
               value={form.project}
               onChange={handleChange}
-              placeholder="Web, e-commerce, software empresarial..."
+              placeholder="Sitio web, app de gestión, software de laboratorio..."
               className="form-input w-full bg-transparent text-sm py-2 md:py-3 outline-none
                          placeholder:text-graphite-500"
               style={{ color: 'var(--color-stone-100)' }}

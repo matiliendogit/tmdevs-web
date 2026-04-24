@@ -1,9 +1,7 @@
 import type { FooterSocialLink } from '../types/index';
 
 const footerLinks: FooterSocialLink[] = [
-  { label: 'Instagram', href: 'https://instagram.com/tmdevs' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/tmdevs' }, // TODO: confirm handle
-  { label: 'GitHub', href: 'https://github.com/tmdevs' }, // TODO: confirm handle
+  { label: 'Email', href: 'mailto:hola@tmdevs.com' },
 ];
 
 export default function Footer() {

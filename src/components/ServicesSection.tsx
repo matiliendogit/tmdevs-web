@@ -4,31 +4,24 @@ import type { Service } from '../types/index';
 const services: Service[] = [
   {
     id: '01',
-    title: 'Aplicaciones Web',
+    title: 'Sitios Web Modernos',
     description:
-      'Reducí tiempos operativos con plataformas web hechas a medida: dashboards, SaaS y portales que tu equipo adopta de inmediato.',
-    tags: ['React', 'Node.js', 'TypeScript'],
+      'Sitios rápidos, mobile-first y optimizados para buscadores. Landings, portafolios y páginas institucionales que generan confianza desde el primer scroll.',
+    tags: ['Astro', 'React', 'Tailwind CSS', 'SEO'],
   },
   {
     id: '02',
-    title: 'E-Commerce',
+    title: 'Web Apps & PWA',
     description:
-      'Multiplicá tus ventas con tiendas online rápidas, seguras y optimizadas para convertir — integradas con tus sistemas actuales.',
-    tags: ['Next.js', 'Stripe', 'PostgreSQL'],
+      'Aplicaciones a medida que automatizan procesos reales: turnos, reservas, gestión de alumnos, administración interna. Tu equipo las usa desde el día uno.',
+    tags: ['React', 'Node.js', 'Express', 'SQL', 'PWA'],
   },
   {
     id: '03',
-    title: 'Software Empresarial',
+    title: 'Software para Laboratorios',
     description:
-      'Automatizá procesos críticos y conectá tus herramientas en una sola plataforma escalable, sin fricciones ni silos de información.',
-    tags: ['API REST', 'Microservices', 'Cloud'],
-  },
-  {
-    id: '04',
-    title: 'APIs e Integraciones',
-    description:
-      'Conectá cualquier sistema o herramienta en días, no meses. APIs robustas que no fallan cuando más las necesitás.',
-    tags: ['REST', 'GraphQL', 'Webhooks'],
+      'Sistemas diseñados desde adentro: uno de nuestros fundadores es bioquímico con experiencia en laboratorios de análisis clínicos, químicos, veterinarios y agronómicos. Soluciones que entienden los flujos reales del lab.',
+    tags: ['Node.js', 'SQL', 'REST API', 'Railway'],
   },
 ];
 

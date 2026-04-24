@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = 'TMdevs — Desarrollo de Software a Medida',
-  description = 'Desarrollamos aplicaciones web, e-commerce y software empresarial a medida. Soluciones tecnológicas que hacen crecer tu negocio. Consultanos hoy.',
+  title = 'TMdevs — Software a Medida para Negocios Reales',
+  description = 'Desarrollamos sitios web, aplicaciones PWA y software especializado. Expertos en software para laboratorios. Córdoba y La Pampa, Argentina.',
   ogImage = 'https://tmdevs.com/og-image.jpg',
 } = Astro.props;
 
@@ -24,36 +24,42 @@ const jsonLd = JSON.stringify({
   name: 'TMdevs',
   url: 'https://tmdevs.com',
   logo: 'https://tmdevs.com/favicon.png',
-  description: 'Desarrollamos aplicaciones web, e-commerce y software empresarial a medida.',
+  description: 'Desarrollo de software a medida: sitios web modernos, aplicaciones PWA y software especializado para laboratorios. Córdoba y La Pampa, Argentina.',
   email: 'hola@tmdevs.com',
-  sameAs: ['https://instagram.com/tmdevs'],
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'AR',
-  },
-  areaServed: {
-    '@type': 'GeoCircle',
-    geoMidpoint: {
-      '@type': 'GeoCoordinates',
-      latitude: -34.6037,
-      longitude: -58.3816,
+  sameAs: [],
+  address: [
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Córdoba',
+      addressRegion: 'Córdoba',
+      addressCountry: 'AR',
     },
-    geoRadius: '50000',
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Santa Rosa',
+      addressRegion: 'La Pampa',
+      addressCountry: 'AR',
+    },
+  ],
+  areaServed: {
+    '@type': 'Country',
+    name: 'Argentina',
   },
   knowsAbout: [
-    'Web Development',
-    'E-Commerce',
-    'Enterprise Software',
-    'API Integration',
-    'Software Development',
+    'Desarrollo Web',
+    'Aplicaciones PWA',
+    'Software para Laboratorios',
+    'Automatización de Procesos',
+    'Software de Gestión',
+    'Node.js',
+    'React',
   ],
   offers: {
     '@type': 'Offer',
     itemOffered: [
-      { '@type': 'Service', name: 'Aplicaciones Web a Medida' },
-      { '@type': 'Service', name: 'E-Commerce' },
-      { '@type': 'Service', name: 'Software Empresarial' },
-      { '@type': 'Service', name: 'APIs e Integraciones' },
+      { '@type': 'Service', name: 'Sitios Web Modernos' },
+      { '@type': 'Service', name: 'Web Apps & PWA' },
+      { '@type': 'Service', name: 'Software para Laboratorios' },
     ],
   },
 });

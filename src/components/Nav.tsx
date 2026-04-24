@@ -5,7 +5,7 @@ import type { NavLink } from "../types/index";
 
 const navLinks: NavLink[] = [
   { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
+  { label: "Casos de Éxito", href: "#casos" },
   { label: "Contacto", href: "#contacto" },
 ];
 

@@ -6,21 +6,21 @@ const steps = [
     icon: MagnifyingGlass,
     title: 'Diagnóstico',
     description:
-      'Entendemos tu negocio, objetivos y desafíos técnicos en una reunión inicial gratuita. Sin compromiso.',
+      'Primera reunión gratuita: entendemos el problema, el flujo de trabajo actual y qué tiene que resolver el software. Sin tecnicismos, sin compromiso.',
   },
   {
     id: '02',
     icon: Code,
     title: 'Diseño y desarrollo',
     description:
-      'Iteramos rápido con entregas semanales. Ves el avance en tiempo real y podés dar feedback en cada etapa.',
+      'Iteramos rápido con entregas reales, no mockups. Ves el producto funcionando desde la primera semana y podés dar feedback en cada etapa.',
   },
   {
     id: '03',
     icon: RocketLaunch,
     title: 'Lanzamiento y soporte',
     description:
-      'Desplegamos, monitoreamos y te acompañamos post-lanzamiento. Tu producto sigue evolucionando con vos.',
+      'Desplegamos en Railway o Vercel, monitoreamos el lanzamiento y te acompañamos después. Tu producto crece con vos.',
   },
 ];
 

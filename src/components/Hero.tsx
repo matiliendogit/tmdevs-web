@@ -87,11 +87,27 @@ export default function Hero() {
             fontSize: "clamp(2.4rem, 12vw, 5rem)",
             color: "var(--color-stone-100)",
             fontFamily: "var(--font-display)",
-            letterSpacing: "-0.03em",
+            letterSpacing: "0.01em",
             animation: "heroFadeUp 0.7s ease 0s both",
           }}
         >
-          Tm DEVS
+          <span
+            style={{
+              letterSpacing: "0.01em",
+              fontSize: "clamp(6rem, 12vw, 3rem)",
+            }}
+          >
+            tm
+          </span>
+          <span> </span>
+          <span
+            style={{
+              letterSpacing: "-0.01em",
+              fontSize: "clamp(2.4rem, 12vw, 3rem)",
+            }}
+          >
+            devs
+          </span>
         </h1>
 
         {/* Thin divider */}
@@ -127,12 +143,13 @@ export default function Hero() {
             animation: "heroFadeUp 0.7s ease 0.28s both",
           }}
         >
-          Construimos aplicaciones web, e-commerce y software empresarial que escalan con tu negocio.
+          Construimos sitios web, aplicaciones y software especializado que
+          resuelven problemas reales de negocio.
         </p>
 
         {/* Primary CTA */}
         <a
-          href="#proyectos"
+          href="#casos"
           style={{
             display: "inline-block",
             marginTop: "2rem",
@@ -152,7 +169,7 @@ export default function Hero() {
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
-          Ver nuestros proyectos
+          Ver casos reales
         </a>
 
         {/* Social proof snippet */}
@@ -166,7 +183,8 @@ export default function Hero() {
             animation: "heroFadeUp 0.7s ease 0.48s both",
           }}
         >
-          10+ proyectos entregados &nbsp;·&nbsp; Buenos Aires, Argentina
+          100+ usuarios activos en producción &nbsp;·&nbsp; Córdoba y La Pampa,
+          Argentina
         </p>
       </div>
     </section>

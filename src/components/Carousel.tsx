@@ -4,33 +4,13 @@ import type { Project } from '../types/index';
 const projects: Project[] = [
   {
     id: '01',
-    title: 'NEXUS',
-    subtitle: 'Aplicación Web a Medida',
-    tag: 'WEB APP',
+    title: 'SUMMIT',
+    subtitle: 'PWA para gimnasio · Santa Rosa, La Pampa',
+    tag: 'EN PRODUCCIÓN',
     description:
-      'Plataforma de gestión interna desarrollada con tecnologías modernas. Flujos de trabajo automatizados y panel de control en tiempo real.',
-    cta: 'Ver Proyecto',
-    ctaHref: '#',
-  },
-  {
-    id: '02',
-    title: 'HELIX',
-    subtitle: 'E-Commerce Platform',
-    tag: 'E-COMMERCE',
-    description:
-      'Tienda online de alto rendimiento con catálogo dinámico, pasarela de pago integrada y dashboard de analítica para el negocio.',
-    cta: 'Ver Proyecto',
-    ctaHref: '#',
-  },
-  {
-    id: '03',
-    title: 'FORGE',
-    subtitle: 'Software Empresarial',
-    tag: 'ENTERPRISE',
-    description:
-      'Sistema ERP personalizado para la gestión de operaciones, inventario y reportes. Diseñado para escalar con el crecimiento del negocio.',
-    cta: 'Ver Proyecto',
-    ctaHref: '#',
+      'Sistema completo de gestión de clases y reservas. Más de 100 alumnos activos reservan, cancelan y gestionan su plan desde el celular. Panel de administración para clases, horarios, docentes y alumnos. Reemplazó la gestión por WhatsApp y papel.',
+    cta: 'Ver la app',
+    ctaHref: 'https://summit-tc.up.railway.app/',
   },
 ];
 
@@ -216,6 +196,8 @@ export default function Carousel() {
               {/* CTA */}
               <a
                 href={project.ctaHref}
+                target={project.ctaHref.startsWith('http') ? '_blank' : undefined}
+                rel={project.ctaHref.startsWith('http') ? 'noopener noreferrer' : undefined}
                 className={`slide-content delay-3 mt-7 md:mt-8 inline-flex items-center gap-3 text-[0.62rem] tracking-[0.22em] uppercase transition-colors duration-300 group ${isActive(i) ? 'active' : ''}`}
                 style={{ color: 'var(--color-stone-100)' }}
               >

@@ -14,7 +14,7 @@ const socials: SocialEntry[] = [
   },
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/5491100000000', // TODO: replace with real business number
+    href: 'https://wa.me/5493512341032',
     Icon: WhatsappLogo,
   },
   {

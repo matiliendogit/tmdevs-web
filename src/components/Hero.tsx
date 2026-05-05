@@ -1,10 +1,7 @@
 export default function Hero() {
   return (
-    <section
-      className="relative w-full flex items-center justify-center overflow-hidden"
-      style={{ height: "100dvh" }}
-    >
-      {/* ── Atmospheric white glow — top-center ── */}
+    <section className="relative w-full flex items-center justify-center overflow-hidden h-dvh">
+      {/* Atmospheric white glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -13,135 +10,66 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Left vertical label ── */}
+      {/* Left vertical label */}
       <div
         className="absolute left-8 md:left-14 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-4"
         style={{ animation: "heroFadeUp 0.7s ease 0.45s both" }}
       >
-        <span
-          style={{
-            color: "var(--color-stone-500)",
-            fontSize: "0.55rem",
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            writingMode: "vertical-rl",
-            transform: "rotate(180deg)",
-          }}
-        >
+        <span className="text-stone-500 text-[0.55rem] tracking-[0.3em] uppercase [writing-mode:vertical-rl] rotate-180">
           00
         </span>
-        <div
-          style={{
-            width: "1px",
-            height: "3.5rem",
-            background: "rgba(138,138,128,0.2)",
-          }}
-        />
+        <div className="w-px h-14 bg-[rgba(138,138,128,0.2)]" />
       </div>
 
-      {/* ── Right vertical label ── */}
+      {/* Right vertical label */}
       <div
         className="absolute right-8 md:right-14 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-4"
         style={{ animation: "heroFadeUp 0.7s ease 0.5s both" }}
       >
-        <div
-          style={{
-            width: "1px",
-            height: "3.5rem",
-            background: "rgba(138,138,128,0.2)",
-          }}
-        />
-        <span
-          style={{
-            color: "var(--color-stone-500)",
-            fontSize: "0.55rem",
-            letterSpacing: "0.3em",
-            textTransform: "uppercase",
-            writingMode: "vertical-rl",
-          }}
-        >
+        <div className="w-px h-14 bg-[rgba(138,138,128,0.2)]" />
+        <span className="text-stone-500 text-[0.55rem] tracking-[0.3em] uppercase [writing-mode:vertical-rl]">
           Software Solutions
         </span>
       </div>
 
-      {/* ── Main content ── */}
+      {/* Main content */}
       <div className="flex flex-col items-center text-center px-8 relative z-10">
         {/* Small label above */}
         <p
-          style={{
-            color: "var(--color-stone-200)",
-            fontSize: "0.6rem",
-            letterSpacing: "0.32em",
-            textTransform: "uppercase",
-            marginBottom: "1.25rem",
-            animation: "heroFadeUp 0.7s ease 0.08s both",
-          }}
+          className="text-stone-200 text-[0.6rem] tracking-[0.32em] uppercase mb-5"
+          style={{ animation: "heroFadeUp 0.7s ease 0.08s both" }}
         >
           Somos
         </p>
 
         {/* Main heading */}
         <h1
-          className="font-black leading-none"
-          style={{
-            fontSize: "clamp(2.4rem, 12vw, 5rem)",
-            color: "var(--color-stone-100)",
-            fontFamily: "var(--font-display)",
-            letterSpacing: "0.01em",
-            animation: "heroFadeUp 0.7s ease 0s both",
-          }}
+          className="font-black leading-none text-stone-100 font-display text-[clamp(2.4rem,12vw,5rem)] tracking-[0.01em]"
+          style={{ animation: "heroFadeUp 0.7s ease 0s both" }}
         >
-          <span
-            style={{
-              letterSpacing: "0.01em",
-              fontSize: "clamp(6rem, 12vw, 3rem)",
-            }}
-          >
-            tm
-          </span>
+          <span className="tracking-[0.01em] text-[clamp(6rem,12vw,3rem)]">tm</span>
           <span> </span>
-          <span
-            style={{
-              letterSpacing: "-0.01em",
-              fontSize: "clamp(2.4rem, 12vw, 3rem)",
-            }}
-          >
-            devs
-          </span>
+          <span className="tracking-[-0.01em] text-[clamp(2.4rem,12vw,3rem)]">devs</span>
         </h1>
 
         {/* Thin divider */}
         <div
-          style={{
-            height: "1px",
-            background: "rgba(138,138,128,0.28)",
-            margin: "1.75rem auto",
-            animation: "heroLineExpand 0.8s ease 0.3s both",
-          }}
+          className="h-px bg-[rgba(138,138,128,0.28)] my-7 mx-auto"
+          style={{ animation: "heroLineExpand 0.8s ease 0.3s both" }}
         />
 
         {/* Tag below */}
         <p
-          className="hero-subtitle"
-          style={{
-            color: "var(--color-stone-200)",
-            animation: "heroFadeUp 0.7s ease 0.18s both",
-          }}
+          className="hero-subtitle text-stone-200"
+          style={{ animation: "heroFadeUp 0.7s ease 0.18s both" }}
         >
           Software / Solutions
         </p>
 
         {/* Subheadline */}
         <p
-          style={{
-            color: "var(--color-stone-400)",
-            fontSize: "clamp(0.8rem, 2vw, 1rem)",
-            letterSpacing: "0.02em",
-            maxWidth: "36rem",
-            lineHeight: "1.6",
-            marginTop: "1.75rem",
-            animation: "heroFadeUp 0.7s ease 0.28s both",
-          }}
+          className="text-stone-400 text-[clamp(0.8rem,2vw,1rem)] tracking-[0.02em] max-w-[36rem] leading-[1.6] mt-7"
+          style={{ animation: "heroFadeUp 0.7s ease 0.28s both" }}
         >
           Construimos sitios web, aplicaciones y software especializado que
           resuelven problemas reales de negocio.
@@ -150,22 +78,8 @@ export default function Hero() {
         {/* Primary CTA */}
         <a
           href="#casos"
-          style={{
-            display: "inline-block",
-            marginTop: "2rem",
-            padding: "0.85rem 2.25rem",
-            background: "var(--color-accent)",
-            color: "var(--color-graphite-950)",
-            fontSize: "0.7rem",
-            fontWeight: 700,
-            letterSpacing: "0.18em",
-            textTransform: "uppercase",
-            textDecoration: "none",
-            borderRadius: "2px",
-            minHeight: "44px",
-            animation: "heroFadeUp 0.7s ease 0.38s both",
-            transition: "opacity 0.2s ease",
-          }}
+          className="inline-block mt-8 px-9 py-[0.85rem] bg-accent text-graphite-950 text-[0.7rem] font-bold tracking-[0.18em] uppercase no-underline rounded-xs min-h-11 transition-opacity duration-200"
+          style={{ animation: "heroFadeUp 0.7s ease 0.38s both" }}
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
@@ -174,14 +88,8 @@ export default function Hero() {
 
         {/* Social proof snippet */}
         <p
-          style={{
-            color: "var(--color-stone-500)",
-            fontSize: "0.58rem",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            marginTop: "1.5rem",
-            animation: "heroFadeUp 0.7s ease 0.48s both",
-          }}
+          className="text-stone-500 text-[0.58rem] tracking-[0.2em] uppercase mt-6"
+          style={{ animation: "heroFadeUp 0.7s ease 0.48s both" }}
         >
           100+ usuarios activos en producción &nbsp;·&nbsp; Córdoba y La Pampa,
           Argentina

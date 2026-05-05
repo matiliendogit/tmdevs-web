@@ -38,10 +38,9 @@ export default function SocialBar() {
           target={href.startsWith('http') ? '_blank' : undefined}
           rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
           aria-label={label}
-          className="transition-opacity duration-300 hover:opacity-50
+          className="text-stone-200 transition-opacity duration-300 hover:opacity-50
                      focus-visible:outline-2 focus-visible:outline-offset-4
                      focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
-          style={{ color: 'var(--color-stone-200)' }}
         >
           <Icon size={20} weight="regular" />
         </a>
@@ -49,11 +48,7 @@ export default function SocialBar() {
 
       {/* Vertical line anchoring icons to the bottom */}
       <div
-        className="w-px"
-        style={{
-          height: '5rem',
-          background: 'linear-gradient(to bottom, rgba(200,200,192,0.3), transparent)',
-        }}
+        className="w-px h-20 bg-linear-to-b from-[rgba(200,200,192,0.3)] to-transparent"
         aria-hidden="true"
       />
     </div>

@@ -44,7 +44,7 @@ export default function Nav() {
 
   return (
     <>
-      {/* ── Top bar ── */}
+      {/* Top bar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-7 md:px-14 md:py-8">
         {/* Logo */}
         <a
@@ -55,11 +55,8 @@ export default function Nav() {
           <img
             src={logoFull.src}
             alt="TMdevs"
-            className="h-11 md:h-14 w-auto"
-            style={{
-              display: "block",
-              filter: "brightness(1.25) contrast(1.1)",
-            }}
+            className="h-11 md:h-14 w-auto block"
+            style={{ filter: "brightness(1.25) contrast(1.1)" }}
           />
         </a>
 
@@ -69,9 +66,8 @@ export default function Nav() {
             <a
               key={href}
               href={href}
-              className="text-[0.68rem] tracking-[0.25em] uppercase transition-opacity duration-300 hover:opacity-50
+              className="text-stone-200 text-[0.68rem] tracking-[0.25em] uppercase transition-opacity duration-300 hover:opacity-50
                          focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
-              style={{ color: "var(--color-stone-200)" }}
             >
               {label}
             </a>
@@ -84,9 +80,8 @@ export default function Nav() {
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
           aria-controls="mobile-menu"
-          className="flex md:hidden items-center justify-center w-9 h-9 transition-opacity duration-300
+          className="text-stone-200 flex md:hidden items-center justify-center w-9 h-9 transition-opacity duration-300
                      focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
-          style={{ color: "var(--color-stone-200)" }}
         >
           {open ? (
             <X size={20} weight="light" />
@@ -96,31 +91,23 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* ── Mobile overlay menu ── */}
+      {/* Mobile overlay menu */}
       <div
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
         aria-label="Menú de navegación"
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 md:hidden
+        className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-10 md:hidden bg-graphite-900
                    mobile-menu-overlay ${open ? "open" : ""}`}
-        style={{ background: "var(--color-graphite-900)" }}
         aria-hidden={!open}
       >
         {navLinks.map(({ label, href }) => (
           <button
             key={href}
             onClick={() => handleNavClick(href)}
-            className="font-black uppercase transition-colors duration-300 hover:opacity-60
+            className="font-display font-black text-stone-100 text-[clamp(2rem,8vw,3rem)] tracking-widest uppercase bg-transparent border-0
+                       transition-colors duration-300 hover:opacity-60
                        focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2rem, 8vw, 3rem)",
-              letterSpacing: "0.1em",
-              color: "var(--color-stone-100)",
-              background: "none",
-              border: "none",
-            }}
           >
             {label}
           </button>

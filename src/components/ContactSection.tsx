@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { ContactFormState, FormStatus } from '../types/index';
 
-const CONTACT_EMAIL = 'hola@tmdevs.com';
+const CONTACT_EMAIL = 'tmdevsdigitallab@gmail.com';
 const CONTACT_LOCATION = 'Córdoba · La Pampa, Argentina';
 const CONTACT_SERVICES = 'Sitios Web · Web Apps & PWA · Software para Laboratorios';
 
@@ -22,10 +22,31 @@ export default function ContactSection() {
     e.preventDefault();
     setStatus('loading');
     try {
-      // TODO: Replace with real endpoint when backend is ready
-      await new Promise((resolve) => setTimeout(resolve, 800));
-      setStatus('success');
-      setForm({ name: '', email: '', project: '', message: '' });
+      const response = await fetch('https://formsubmit.co/ajax/f87e71162b2b02dd8ee55bc5c5681460', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          project: form.project,
+          message: form.message,
+          _subject: `Nuevo contacto de ${form.name} — TMdevs`,
+          _captcha: 'false',
+          _template: 'table',
+        }),
+      });
+
+      if (!response.ok) throw new Error('Network error');
+      const data = await response.json();
+      if (data.success === 'true' || data.success === true) {
+        setStatus('success');
+        setForm({ name: '', email: '', project: '', message: '' });
+      } else {
+        throw new Error('FormSubmit error');
+      }
     } catch {
       setStatus('error');
     }

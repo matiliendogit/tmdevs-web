@@ -1,7 +1,7 @@
 import type { FooterSocialLink } from '../types/index';
 
 const footerLinks: FooterSocialLink[] = [
-  { label: 'Email', href: 'mailto:hola@tmdevs.com' },
+  { label: 'Email', href: 'mailto:tmdevsdigitallab@gmail.com' },
 ];
 
 export default function Footer() {

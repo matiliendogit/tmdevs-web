@@ -1,0 +1,77 @@
+[   18591ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-NKAXCTWA.js?v=9a304cff:20102
+[   24653ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-NKAXCTWA.js?v=9a304cff:20102
+[   58508ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-NKAXCTWA.js?v=9a304cff:20102
+[   87596ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-NKAXCTWA.js?v=9a304cff:20102
+[  137253ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  <ContactSection>
+    <div className="w-full gri...">
+      <div>
+      <div className="flex flex-...">
+        <span>
+        <form className="flex flex-..." noValidate={true} onSubmit={function handleSubmit} aria-label="Formulario...">
+          <div>
+            <label>
+            <input
+              id="contact-name"
+              type="text"
+              name="name"
+              value=""
+              onChange={function handleChange}
+              placeholder="Tu nombre completo"
+              aria-required="true"
+              className={"form-input text-stone-100 w-full bg-transparent text-sm py-2 md:py-3 outline-none\n        ..."}
+-             style={{}}
+            >
+          <div>
+            <label>
+            <input
+              id="contact-email"
+              type="email"
+              name="email"
+              value=""
+              onChange={function handleChange}
+              placeholder="tu@email.com"
+              aria-required="true"
+              className={"form-input text-stone-100 w-full bg-transparent text-sm py-2 md:py-3 outline-none\n        ..."}
+-             style={{}}
+            >
+          <div>
+            <label>
+            <input
+              id="contact-project"
+              type="text"
+              name="project"
+              value=""
+              onChange={function handleChange}
+              placeholder="Sitio web, app de gestión, software de laboratorio..."
+              className={"form-input text-stone-100 w-full bg-transparent text-sm py-2 md:py-3 outline-none\n        ..."}
+-             style={{}}
+            >
+          <div>
+            <label>
+            <textarea
+              id="contact-message"
+              name="message"
+              value=""
+              onChange={function handleChange}
+              rows={3}
+              placeholder="Contanos sobre tu proyecto"
+              aria-required="true"
+              className={"form-input text-stone-100 w-full bg-transparent text-sm py-2 md:py-3 outline-none resize-no..."}
+-             style={{}}
+            >
+          ...
+        ...
+ @ http://localhost:4322/node_modules/.vite/deps/chunk-NKAXCTWA.js?v=9a304cff:4072
+[  173126ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:4322/node_modules/.vite/deps/chunk-NKAXCTWA.js?v=9a304cff:20102

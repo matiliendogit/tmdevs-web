@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { List, X } from "@phosphor-icons/react";
-import logoFull from "../assets/TM-devs-logo-full.png";
 import type { NavLink } from "../types/index";
 
 const navLinks: NavLink[] = [
@@ -45,21 +44,7 @@ export default function Nav() {
   return (
     <>
       {/* Top bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-7 md:px-14 md:py-8">
-        {/* Logo */}
-        <a
-          href="/"
-          aria-label="TMdevs — Inicio"
-          className="focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[--color-accent] focus-visible:rounded-sm"
-        >
-          <img
-            src={logoFull.src}
-            alt="TMdevs"
-            className="h-11 md:h-14 w-auto block"
-            style={{ filter: "brightness(1.25) contrast(1.1)" }}
-          />
-        </a>
-
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-end px-8 py-7 md:px-14 md:py-8">
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-12">
           {navLinks.map(({ label, href }) => (

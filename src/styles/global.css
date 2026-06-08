@@ -18,11 +18,12 @@
   --color-stone-100: #f2f2ea;
 
   /* Accent */
-  --color-accent: #c8b89a;
+  --color-accent: #fadb9f;
   --color-cream: #f5f4ee;
 
   /* Typography */
-  --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Questrial", "Inter", "Helvetica Neue", Arial, sans-serif;
+
 }
 
 /* ---- Reset ---- */

@@ -1,0 +1,166 @@
+- generic [active] [ref=e1]:
+  - progressbar "Cargando tm.devs" [ref=e2]:
+    - img "tm.devs digital lab" [ref=e3]
+  - navigation [ref=e5]:
+    - generic [ref=e6]:
+      - link "Servicios" [ref=e7] [cursor=pointer]:
+        - /url: "#servicios"
+      - link "Casos de Éxito" [ref=e8] [cursor=pointer]:
+        - /url: "#casos"
+      - link "Contacto" [ref=e9] [cursor=pointer]:
+        - /url: "#contacto"
+  - main [ref=e10]:
+    - generic [ref=e12]:
+      - generic [ref=e14]: "00"
+      - generic [ref=e18]: Software Solutions
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: Somos
+        - heading "tm devs" [level=1] [ref=e21]
+        - paragraph [ref=e22]: Software / Solutions
+        - paragraph [ref=e23]: Construimos sitios web, aplicaciones y software especializado que resuelven problemas reales de negocio.
+        - paragraph [ref=e24]: 100+ usuarios activos en producción · Córdoba y La Pampa, Argentina
+        - link "Ver casos reales" [ref=e25] [cursor=pointer]:
+          - /url: "#casos"
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]: Section 02
+        - heading "SERVICIOS" [level=2] [ref=e31]
+      - generic [ref=e33]:
+        - article [ref=e34]:
+          - generic [ref=e35]: "01"
+          - heading "Sitios Web Modernos" [level=3] [ref=e36]
+          - generic [ref=e37]:
+            - paragraph [ref=e38]: Sitios rápidos, mobile-first y optimizados para buscadores. Landings, portafolios y páginas institucionales que generan confianza desde el primer scroll.
+            - list "Tecnologías" [ref=e39]:
+              - listitem [ref=e40]: Astro
+              - listitem [ref=e41]: React
+              - listitem [ref=e42]: Tailwind CSS
+              - listitem [ref=e43]: SEO
+            - link "Hablar sobre mi proyecto →" [ref=e44] [cursor=pointer]:
+              - /url: "#contacto"
+        - article [ref=e45]:
+          - generic [ref=e46]: "02"
+          - heading "Web Apps & PWA" [level=3] [ref=e47]
+          - generic [ref=e48]:
+            - paragraph [ref=e49]: "Aplicaciones a medida que automatizan procesos reales: turnos, reservas, gestión de alumnos, administración interna. Tu equipo las usa desde el día uno."
+            - list "Tecnologías" [ref=e50]:
+              - listitem [ref=e51]: React
+              - listitem [ref=e52]: Node.js
+              - listitem [ref=e53]: Express
+              - listitem [ref=e54]: SQL
+              - listitem [ref=e55]: PWA
+            - link "Hablar sobre mi proyecto →" [ref=e56] [cursor=pointer]:
+              - /url: "#contacto"
+        - article [ref=e57]:
+          - generic [ref=e58]: "03"
+          - heading "Software para Laboratorios" [level=3] [ref=e59]
+          - generic [ref=e60]:
+            - paragraph [ref=e61]: "Sistemas diseñados desde adentro: uno de nuestros fundadores es bioquímico con experiencia en laboratorios de análisis clínicos, químicos, veterinarios y agronómicos. Soluciones que entienden los flujos reales del lab."
+            - list "Tecnologías" [ref=e62]:
+              - listitem [ref=e63]: Node.js
+              - listitem [ref=e64]: SQL
+              - listitem [ref=e65]: REST API
+              - listitem [ref=e66]: Railway
+            - link "Hablar sobre mi proyecto →" [ref=e67] [cursor=pointer]:
+              - /url: "#contacto"
+    - generic [ref=e70]:
+      - generic [ref=e71]:
+        - generic [ref=e72]: Section 03
+        - heading "PROCESO" [level=2] [ref=e73]
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - generic [ref=e77]: "01"
+          - img [ref=e79]
+          - heading "Diagnóstico" [level=3] [ref=e81]
+          - paragraph [ref=e82]: "Primera reunión gratuita: entendemos el problema, el flujo de trabajo actual y qué tiene que resolver el software. Sin tecnicismos, sin compromiso."
+        - generic [ref=e83]:
+          - generic [ref=e84]: "02"
+          - img [ref=e86]
+          - heading "Diseño y desarrollo" [level=3] [ref=e88]
+          - paragraph [ref=e89]: Iteramos rápido con entregas reales, no mockups. Ves el producto funcionando desde la primera semana y podés dar feedback en cada etapa.
+        - generic [ref=e90]:
+          - generic [ref=e91]: "03"
+          - img [ref=e93]
+          - heading "Lanzamiento y soporte" [level=3] [ref=e95]
+          - paragraph [ref=e96]: Desplegamos en Railway o Vercel, monitoreamos el lanzamiento y te acompañamos después. Tu producto crece con vos.
+      - link "Empezar ahora →" [ref=e98] [cursor=pointer]:
+        - /url: "#contacto"
+    - generic [ref=e102]:
+      - generic:
+        - button "Ver demo laptop"
+        - button "Ver demo mobile"
+      - generic [ref=e103]:
+        - article [ref=e105]:
+          - generic [ref=e106]: EN PRODUCCIÓN
+          - generic [ref=e108]: "01"
+          - generic [ref=e110]:
+            - heading "SUMMIT" [level=2] [ref=e111]
+            - paragraph [ref=e112]: PWA para gimnasio · Santa Rosa, La Pampa
+            - paragraph [ref=e113]: Sistema completo de gestión de clases y reservas. Más de 100 alumnos activos reservan, cancelan y gestionan su plan desde el celular. Panel de administración para clases, horarios, docentes y alumnos. Reemplazó la gestión por WhatsApp y papel.
+            - link "Ver la app" [ref=e114] [cursor=pointer]:
+              - /url: https://summit-tc.up.railway.app/
+              - text: Ver la app
+              - generic [ref=e116]: →
+        - button [ref=e117]:
+          - img [ref=e118]
+        - button [ref=e120]:
+          - img [ref=e121]
+        - button [ref=e124]
+    - generic [ref=e127]:
+      - generic [ref=e128]:
+        - generic [ref=e129]:
+          - generic [ref=e130]: Section 04
+          - heading "CONTACTO" [level=2] [ref=e131]
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - paragraph [ref=e135]: Email
+            - link "tmdevsdigitallab@gmail.com" [ref=e136] [cursor=pointer]:
+              - /url: mailto:tmdevsdigitallab@gmail.com
+          - generic [ref=e137]:
+            - paragraph [ref=e138]: Ubicación
+            - paragraph [ref=e139]: Córdoba · La Pampa, Argentina
+          - generic [ref=e140]:
+            - paragraph [ref=e141]: Trabajamos en
+            - paragraph [ref=e142]: Sitios Web · Web Apps & PWA · Software para Laboratorios
+      - generic [ref=e143]:
+        - generic [ref=e144]: Formulario de Contacto
+        - form "Formulario de contacto" [ref=e145]:
+          - generic [ref=e146]:
+            - generic [ref=e147]: Nombre
+            - textbox "Nombre" [ref=e148]:
+              - /placeholder: Tu nombre completo
+          - generic [ref=e149]:
+            - generic [ref=e150]: Email
+            - textbox "Email" [ref=e151]:
+              - /placeholder: tu@email.com
+          - generic [ref=e152]:
+            - generic [ref=e153]: Tipo de Proyecto
+            - textbox "Tipo de Proyecto" [ref=e154]:
+              - /placeholder: Sitio web, app de gestión, software de laboratorio...
+          - generic [ref=e155]:
+            - generic [ref=e156]: Mensaje
+            - textbox "Mensaje" [ref=e157]:
+              - /placeholder: Contanos sobre tu proyecto
+          - button "Enviar Mensaje" [ref=e158]: Enviar Mensaje
+        - status [ref=e160]
+  - contentinfo [ref=e163]:
+    - paragraph [ref=e164]: HABLEMOS DE TU PROYECTO
+    - link "Contactanos" [ref=e166] [cursor=pointer]:
+      - /url: "#contacto"
+    - navigation "Redes sociales" [ref=e167]:
+      - link "Email" [ref=e168] [cursor=pointer]:
+        - /url: mailto:tmdevsdigitallab@gmail.com
+    - paragraph [ref=e169]: © 2026 TMdevs. All rights reserved.
+  - generic [ref=e172]:
+    - button "Menu" [ref=e173]:
+      - img [ref=e175]
+      - generic: Menu
+    - button "Inspect" [ref=e179]:
+      - img [ref=e181]
+      - generic: Inspect
+    - button "Audit" [ref=e183]:
+      - img [ref=e185]
+      - generic: Audit
+    - button "Settings" [ref=e188]:
+      - img [ref=e190]
+      - generic: Settings

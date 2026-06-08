@@ -7,6 +7,11 @@ dist/
 # dependencies
 node_modules
 
+# Original/source video files — host externally, never commit
+src/assets/videos/*.gif
+src/assets/videos/*.mp4
+# WebM sources kept tracked only if compressed < 5 MB
+# src/assets/videos/*.webm
 
 # logs
 npm-debug.log*

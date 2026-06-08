@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import logoXs from '../assets/TM-devs-logo-xs.png';
+import LoadingScreen from '../components/LoadingScreen.astro';
 
 interface Props {
   title?: string;
@@ -101,8 +102,10 @@ const jsonLd = JSON.stringify({
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Questrial: primary display font -->
+    <!-- Inter: kept for the "tm devs" logo heading -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Questrial&display=swap"
       rel="stylesheet"
     />
 
@@ -111,8 +114,11 @@ const jsonLd = JSON.stringify({
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={jsonLd} />
+
   </head>
   <body>
+    <LoadingScreen />
+
     <div class="cursor" id="cursor" aria-hidden="true"></div>
     <slot/>
 
@@ -124,5 +130,6 @@ const jsonLd = JSON.stringify({
         if (e.key === 'Tab') html.classList.remove('using-mouse');
       });
     </script>
+
   </body>
 </html>

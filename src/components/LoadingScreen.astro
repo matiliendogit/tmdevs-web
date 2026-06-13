@@ -81,7 +81,11 @@ import tmdevsLogoBlack from '../assets/tmdevs-logo-black.png';
       el.classList.add('is-hidden');
       document.body.style.overflow = '';
       // Remove from DOM after transition so it no longer blocks the a11y tree
-      el.addEventListener('transitionend', () => el.remove(), { once: true });
+      el.addEventListener('transitionend', () => {
+        el.remove();
+        window.__tmLoadingDone = true;
+        window.dispatchEvent(new CustomEvent('tmLoadingDone'));
+      }, { once: true });
     }
 
     // Minimum display time

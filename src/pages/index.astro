@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
+import MobileHookSection from '../components/MobileHookSection';
 import ServicesSection from '../components/ServicesSection';
 import ProcessSection from '../components/ProcessSection';
 import Carousel from '../components/Carousel';
@@ -16,6 +17,7 @@ import Footer from '../components/Footer';
   <Nav client:load />
   <main>
     <Hero client:load />
+    <MobileHookSection client:visible />
     <section id="servicios">
       <ServicesSection client:visible />
     </section>

@@ -32,7 +32,7 @@ const TagList = ({ tags }: { readonly tags: string[] }) => (
     {tags.map((tag) => (
       <li
         key={tag}
-        className="text-stone-400 text-[0.55rem] tracking-[0.18em] uppercase px-2.5 py-1 rounded-sm border border-[rgba(138,138,128,0.3)]"
+        className="text-graphite-500 text-[0.55rem] tracking-[0.18em] uppercase px-2.5 py-1 rounded-sm border border-graphite-600/20"
       >
         {tag}
       </li>
@@ -52,28 +52,25 @@ export default function ServicesSection() {
   };
 
   return (
-    <div className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20">
+    <div className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20 bg-[#f5f4ee]">
 
       {/* Section header */}
       <div className="mb-10 md:mb-20 animate-fade-in timeline-view animate-range-[entry_0%_entry_100%]">
-        <span className="block text-stone-500 text-[0.58rem] tracking-[0.22em] uppercase mb-5">
-          Section 02
-        </span>
         <h2
           id="servicios-heading"
-          className="font-black uppercase leading-none text-stone-100 font-display text-[clamp(2.5rem,6vw,5rem)] tracking-[-0.03em]"
+          className="font-black uppercase leading-none text-graphite-900 font-display text-[clamp(2.5rem,6vw,5rem)] tracking-[-0.03em]"
         >
           SERVICIOS
         </h2>
         <div
-          className="mt-6 md:mt-8 w-10 h-px bg-[rgba(138,138,128,0.2)]"
+          className="mt-6 md:mt-8 w-10 h-px bg-graphite-600/20"
           aria-hidden="true"
         />
       </div>
 
       {/* Services grid */}
       <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-px bg-graphite-600/40 border border-graphite-600/40"
+        className="grid grid-cols-1 md:grid-cols-2 gap-px bg-graphite-600/[0.07] border border-graphite-600/[0.1]"
       >
         {services.map((service) => {
           const isExpanded = expandedIds.has(service.id);
@@ -81,19 +78,11 @@ export default function ServicesSection() {
           return (
             <article
               key={service.id}
-              className="group relative p-8 md:p-12 lg:p-14 bg-graphite-800 animate-zoom-in timeline-view animate-range-[entry_0%_entry_100%]"
+              className="group relative p-8 md:p-12 lg:p-14 bg-white/75 backdrop-blur-sm animate-zoom-in timeline-view animate-range-[entry_0%_entry_100%]"
             >
-              {/* Service number (decorative) */}
-              <span
-                className="absolute top-6 right-7 md:top-8 md:right-10 text-graphite-600 text-[0.55rem] tracking-[0.28em] uppercase"
-                aria-hidden="true"
-              >
-                {service.id}
-              </span>
-
               {/* Title */}
               <h3
-                className="font-black uppercase leading-tight mb-3 md:mb-5 text-stone-100 font-display text-[clamp(1.1rem,3.8vw,2rem)] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[--color-accent]"
+                className="font-black uppercase leading-tight mb-3 md:mb-5 text-graphite-900 font-display text-[clamp(1.1rem,3.8vw,2rem)] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[--color-accent]"
               >
                 {service.title}
               </h3>
@@ -106,12 +95,12 @@ export default function ServicesSection() {
                   aria-controls={`service-desc-${service.id}`}
                   className="w-full text-left flex items-start justify-between gap-3 group/toggle"
                 >
-                  <p className="text-stone-200 text-sm leading-relaxed">
+                  <p className="text-graphite-700 text-sm leading-relaxed">
                     {getPreview(service.description)}
-                    <span className="text-stone-400">…</span>
+                    <span className="text-graphite-500">…</span>
                   </p>
                   <span
-                    className="text-accent flex-shrink-0 mt-0.5 text-base font-light leading-none transition-transform duration-400 inline-block"
+                    className="text-graphite-500 flex-shrink-0 mt-0.5 text-base font-light leading-none transition-transform duration-400 inline-block"
                     style={{
                       transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)',
                     }}
@@ -129,15 +118,15 @@ export default function ServicesSection() {
                   }}
                 >
                   <div className="overflow-hidden">
-                    <p className="text-stone-200 text-sm leading-relaxed mt-4 mb-5">
+                    <p className="text-graphite-700 text-sm leading-relaxed mt-4 mb-5">
                       {service.description}
                     </p>
                     <TagList tags={service.tags} />
                     <a
                       href="#contacto"
-                      className="inline-block mt-5 text-accent text-[0.6rem] tracking-[0.16em] uppercase transition-colors duration-300"
+                      className="inline-flex items-center gap-2 mt-5 px-4 py-2.5 bg-graphite-900 text-cream text-[0.62rem] font-bold tracking-[0.16em] uppercase rounded-xs transition-opacity duration-200 hover:opacity-80"
                     >
-                      Hablar sobre mi proyecto →
+                      Hablar sobre mi proyecto <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
@@ -145,15 +134,15 @@ export default function ServicesSection() {
 
               {/* Desktop: full description always visible */}
               <div className="hidden md:block">
-                <p className="text-stone-200 text-sm leading-relaxed mb-6">
+                <p className="text-graphite-700 text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
                 <TagList tags={service.tags} />
                 <a
                   href="#contacto"
-                  className="inline-block mt-6 text-accent text-[0.6rem] tracking-[0.16em] uppercase transition-colors duration-300 hover:opacity-70"
+                  className="inline-flex items-center gap-2 mt-6 px-4 py-2.5 bg-graphite-900 text-cream text-[0.62rem] font-bold tracking-[0.16em] uppercase rounded-xs transition-opacity duration-200 hover:opacity-80"
                 >
-                  Hablar sobre mi proyecto →
+                  Hablar sobre mi proyecto <span aria-hidden="true">→</span>
                 </a>
               </div>
             </article>

@@ -224,7 +224,7 @@ export default function Carousel() {
   const isActive = (idx: number) => activeContent === idx;
 
   return (
-    <div ref={wrapperRef} className="relative" style={{ height: "200vh" }}>
+    <div ref={wrapperRef} className="relative bg-graphite-900" style={{ height: "200vh" }}>
       <section
         ref={sectionRef}
         className="sticky top-0 w-full overflow-hidden h-dvh"

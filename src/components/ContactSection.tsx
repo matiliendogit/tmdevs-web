@@ -55,7 +55,7 @@ export default function ContactSection() {
   const isLoading = status === 'loading';
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 pt-28 md:min-h-dvh md:pt-40">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 pt-28 md:min-h-dvh md:pt-40 bg-graphite-900">
       {/* Left column — Contact info */}
       <div className="flex flex-col justify-between px-10 pb-10 border-b md:border-b-0 md:border-r md:pl-12 md:pr-8 md:pb-52 lg:pl-20 lg:pr-10 border-graphite-600/60">
         <div>

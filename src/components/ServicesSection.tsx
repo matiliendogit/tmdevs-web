@@ -66,9 +66,9 @@ export default function ServicesSection() {
   };
 
   return (
-    <div className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20 bg-white">
+    <div className="w-full pt-28 pb-48 px-10 md:h-dvh md:pt-0 md:pb-0 md:px-12 lg:px-20 md:flex md:flex-col md:justify-center bg-white">
       {/* Section header */}
-      <div className="mb-10 md:mb-20 animate-fade-in timeline-view animate-range-[entry_0%_entry_100%]">
+      <div className="mb-10 md:mb-12 animate-fade-in timeline-view animate-range-[entry_0%_entry_100%]">
         <h2
           id="servicios-heading"
           className="font-black uppercase leading-none text-graphite-900 font-display text-[clamp(2.5rem,6vw,5rem)] tracking-[-0.03em]"
@@ -82,14 +82,14 @@ export default function ServicesSection() {
       </div>
 
       {/* Services grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-graphite-600/[0.07] border border-graphite-600/[0.1]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-graphite-600/[0.07] border border-graphite-600/[0.1]">
         {services.map((service) => {
           const isExpanded = expandedIds.has(service.id);
 
           return (
             <article
               key={service.id}
-              className="group relative p-8 md:p-12 lg:p-14 bg-white/75 backdrop-blur-sm animate-zoom-in timeline-view animate-range-[entry_0%_entry_100%]"
+              className="group relative p-8 md:p-8 lg:p-10 bg-white/75 backdrop-blur-sm animate-zoom-in timeline-view animate-range-[entry_0%_entry_100%]"
             >
               {/* Title */}
               <h3 className="font-black uppercase leading-tight mb-3 md:mb-5 text-graphite-900 font-display text-[clamp(1.1rem,3.8vw,2rem)] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[--color-accent]">

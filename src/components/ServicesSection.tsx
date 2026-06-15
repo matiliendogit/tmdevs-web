@@ -1,31 +1,45 @@
-import { useState } from 'react';
-import type { Service } from '../types/index';
+import { useState } from "react";
+import type { Service } from "../types/index";
 
 const services: Service[] = [
   {
-    id: '01',
-    title: 'Sitios Web Modernos',
+    id: "01",
+    title: "Sitios Web Modernos",
     description:
-      'Sitios rápidos, mobile-first y optimizados para buscadores. Landings, portafolios y páginas institucionales que generan confianza desde el primer scroll.',
-    tags: ['Astro', 'React', 'Tailwind CSS', 'SEO'],
+      "Sitios rápidos, mobile-first y optimizados para buscadores. Landings, portafolios y páginas institucionales que generan confianza y atraen clientes desde la primera visita.",
+    tags: ["Webs de Negocios", "Webs para eventos", "Emprendimientos"],
+    cta: "Hablemos de tu sitio web",
   },
   {
-    id: '02',
-    title: 'Web Apps & PWA',
+    id: "02",
+    title: "APPs para Celulares y computadoras",
     description:
-      'Aplicaciones a medida que automatizan procesos reales: turnos, reservas, gestión de alumnos, administración interna. Tu equipo las usa desde el día uno.',
-    tags: ['React', 'Node.js', 'Express', 'SQL', 'PWA'],
+      "Aplicaciones a medida que automatizan procesos reales, reduciendo la carga de trabajo y mejorando la eficiencia. Llegá a tus usuarios o clientes de la mejor manera y con el sello de tu marca o negocio.",
+    tags: [
+      "Administración de negocio",
+      "Gestión de Turnos",
+      "Gestión de clases",
+      "Gestión de pedidos",
+      "Gestión de productos",
+    ],
+    cta: "Hablemos de tu app personalizada",
   },
   {
-    id: '03',
-    title: 'Software para Laboratorios',
+    id: "03",
+    title: "Software para Laboratorios",
     description:
-      'Sistemas diseñados desde adentro: uno de nuestros fundadores es bioquímico con experiencia en laboratorios de análisis clínicos, químicos, veterinarios y agronómicos. Soluciones que entienden los flujos reales del lab.',
-    tags: ['Node.js', 'SQL', 'REST API', 'Railway'],
+      "Sistemas diseñados desde adentro: uno de nuestros fundadores es bioquímico con experiencia en laboratorios de análisis clínicos, químicos, veterinarios y agronómicos. Soluciones que entienden los flujos reales del lab.",
+    tags: [
+      "Interfases",
+      "Sistemas de Stock",
+      "Gestión de resultados",
+      "Automatización",
+    ],
+    cta: "Hablemos de tu software para laboratorios",
   },
 ];
 
-const getPreview = (desc: string) => desc.split(' ').slice(0, 4).join(' ');
+const getPreview = (desc: string) => desc.split(" ").slice(0, 4).join(" ");
 
 const TagList = ({ tags }: { readonly tags: string[] }) => (
   <ul className="flex flex-wrap gap-2" aria-label="Tecnologías">
@@ -52,8 +66,7 @@ export default function ServicesSection() {
   };
 
   return (
-    <div className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20 bg-[#f5f4ee]">
-
+    <div className="w-full md:min-h-dvh pt-28 pb-48 px-10 md:pt-40 md:pb-52 md:px-12 lg:px-20 bg-white">
       {/* Section header */}
       <div className="mb-10 md:mb-20 animate-fade-in timeline-view animate-range-[entry_0%_entry_100%]">
         <h2
@@ -69,9 +82,7 @@ export default function ServicesSection() {
       </div>
 
       {/* Services grid */}
-      <div
-        className="grid grid-cols-1 md:grid-cols-2 gap-px bg-graphite-600/[0.07] border border-graphite-600/[0.1]"
-      >
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-graphite-600/[0.07] border border-graphite-600/[0.1]">
         {services.map((service) => {
           const isExpanded = expandedIds.has(service.id);
 
@@ -81,9 +92,7 @@ export default function ServicesSection() {
               className="group relative p-8 md:p-12 lg:p-14 bg-white/75 backdrop-blur-sm animate-zoom-in timeline-view animate-range-[entry_0%_entry_100%]"
             >
               {/* Title */}
-              <h3
-                className="font-black uppercase leading-tight mb-3 md:mb-5 text-graphite-900 font-display text-[clamp(1.1rem,3.8vw,2rem)] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[--color-accent]"
-              >
+              <h3 className="font-black uppercase leading-tight mb-3 md:mb-5 text-graphite-900 font-display text-[clamp(1.1rem,3.8vw,2rem)] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[--color-accent]">
                 {service.title}
               </h3>
 
@@ -95,14 +104,16 @@ export default function ServicesSection() {
                   aria-controls={`service-desc-${service.id}`}
                   className="w-full text-left flex items-start justify-between gap-3 group/toggle"
                 >
-                  <p className="text-graphite-700 text-sm leading-relaxed">
-                    {getPreview(service.description)}
-                    <span className="text-graphite-500">…</span>
-                  </p>
+                  {!isExpanded && (
+                    <p className="text-graphite-700 text-sm leading-relaxed">
+                      {getPreview(service.description)}
+                      <span className="text-graphite-500">…</span>
+                    </p>
+                  )}
                   <span
-                    className="text-graphite-500 flex-shrink-0 mt-0.5 text-base font-light leading-none transition-transform duration-400 inline-block"
+                    className="ml-auto text-graphite-500 shrink-0 mt-0.5 text-base font-light leading-none transition-transform duration-400 inline-block"
                     style={{
-                      transform: isExpanded ? 'rotate(45deg)' : 'rotate(0deg)',
+                      transform: isExpanded ? "rotate(45deg)" : "rotate(0deg)",
                     }}
                     aria-hidden="true"
                   >
@@ -113,8 +124,9 @@ export default function ServicesSection() {
                 <div
                   className="grid"
                   style={{
-                    gridTemplateRows: isExpanded ? '1fr' : '0fr',
-                    transition: 'grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                    gridTemplateRows: isExpanded ? "1fr" : "0fr",
+                    transition:
+                      "grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                 >
                   <div className="overflow-hidden">
@@ -126,7 +138,7 @@ export default function ServicesSection() {
                       href="#contacto"
                       className="inline-flex items-center gap-2 mt-5 px-4 py-2.5 bg-graphite-900 text-cream text-[0.62rem] font-bold tracking-[0.16em] uppercase rounded-xs transition-opacity duration-200 hover:opacity-80"
                     >
-                      Hablar sobre mi proyecto <span aria-hidden="true">→</span>
+                      {service.cta} <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
@@ -142,7 +154,7 @@ export default function ServicesSection() {
                   href="#contacto"
                   className="inline-flex items-center gap-2 mt-6 px-4 py-2.5 bg-graphite-900 text-cream text-[0.62rem] font-bold tracking-[0.16em] uppercase rounded-xs transition-opacity duration-200 hover:opacity-80"
                 >
-                  Hablar sobre mi proyecto <span aria-hidden="true">→</span>
+                  {service.cta} <span aria-hidden="true">→</span>
                 </a>
               </div>
             </article>

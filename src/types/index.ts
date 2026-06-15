@@ -23,6 +23,7 @@ export interface Service {
   title: string;
   description: string;
   tags: string[];
+  cta: string;
 }
 
 export interface FooterSocialLink {

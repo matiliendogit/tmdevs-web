@@ -149,6 +149,16 @@ html.using-mouse .cursor {
   }
 }
 
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-1.5rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(1.5rem); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 /* ---- Carousel content animation states ---- */
 .slide-content {
   opacity: 0;

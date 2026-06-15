@@ -149,6 +149,11 @@ html.using-mouse .cursor {
   }
 }
 
+@keyframes growDown {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
 @keyframes slideFromLeft {
   from { opacity: 0; transform: translateX(-1.5rem); }
   to   { opacity: 1; transform: translateX(0); }
